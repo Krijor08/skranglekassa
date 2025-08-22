@@ -1,0 +1,10 @@
+h1 {
+    font-size: 50px;
+    border-left-width: 5px;
+    line-height: 20px;
+    border-left-style: solid;
+    border-left-color: green;
+}
+p {
+    font-size: 25px;
+}
