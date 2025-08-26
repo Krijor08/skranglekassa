@@ -1,3 +1,7 @@
+body {
+    margin: 10px;
+}
+
 h1 {
     font-size: 50px;
     border-left-width: 5px;
@@ -5,6 +9,33 @@ h1 {
     border-left-style: solid;
     border-left-color: green;
 }
+
 p {
     font-size: 25px;
+}
+
+button.navBtn {
+    background-color: darkgreen;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button.productBtn {
+    background-color: darkgreen;
+    color: white;
+    padding: 15px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+footer {
+    background-color:forestgreen;
+    color: white;
+    padding: 10px 10px;
 }

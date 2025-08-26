@@ -4,19 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/SRC/CSS/Main.css">
+    <link rel="script" href="/SRC/JS/Main.js">
     <title>Skranglekassa.no</title>
 </head>
 <nav>
-    <a href="/SRC/HTML/login.html">Logg Inn</a>
-    <a href="/SRC/HTML/signup.html">Registrer Bruker</a>
+    <button class="navBtn" onclick="window.location.href='/SRC/HTML/login.html'">
+        Logg inn
+    </button>
+    <button class="navBtn" onclick="window.location.href='/SRC/HTML/signup.html'">
+        Registrer Bruker
+    </button>
+    <button class="navBtn" onclick="window.location.href='/SRC/HTML/contact.html'">
+        Kontakt
+    </button>
 </nav>
+
 <body>
     <h1>Velkommen til</h1>
     <h1 style="color: green;">Skranglekassa.no!</h1>
     <p>Brukt og nytt, til en <b><i>rimelig</i></b> pris!</p>
     <br>
     <br>
-    <p>Diverse produkter:</p>
+    <button id="navBtnAllPruducts">Alle Produkter</button>
+    <script>
+        document.getElementById("navBtnAllPruducts").onclick = function () {
+            window.location.href = "/SRC/HTML/allproducts.html";
+        }
+    </script>
+    <p>Nye produkter:</p>
 
 </body>
+<main>
+    <section>
+        <button class="productBtn" onclick="window.location.href='/SRC/HTML/product.html'">
+            <img src="/IMG/Black_square.jpg" alt="Bilde av produktet">
+            Produkt
+        </button>
+    </section>
+</main>
+<footer>
+    <h2>Skranglekassa</h2>
+</footer>
 </html>
