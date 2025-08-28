@@ -2,6 +2,24 @@ body {
     margin: 10px;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: green;
+    border-radius: 10px 0px 0px 10px
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(31, 212, 31);
+  border-radius: 10px 0px 0px 10px
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(90, 255, 90);
+}
+
 h1 {
     font-size: 50px;
     border-left-width: 5px;
