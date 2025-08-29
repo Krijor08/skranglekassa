@@ -2,6 +2,14 @@ body {
     margin: 10px;
 }
 
+header {
+    background-color:forestgreen;
+    color: white;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -21,15 +29,35 @@ body {
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 60px;
     border-left-width: 5px;
-    line-height: 20px;
+    line-height: 30px;
+    border-left-style: solid;
+    border-left-color: green;
+}
+
+h2 {
+    font-size: 35px;
+    border-left-width: 5px;
+    line-height: 15px;
+    border-left-style: solid;
+    border-left-color: green;
+}
+
+h3 {
+    font-size: 30px;
+    border-left-width: 5px;
+    line-height: 10px;
     border-left-style: solid;
     border-left-color: green;
 }
 
 p {
     font-size: 25px;
+    border-left-width: 5px;
+    line-height: 5px;
+    border-left-style: solid;
+    border-left-color: green;
 }
 
 button.navBtn {
@@ -41,7 +69,7 @@ button.navBtn {
     border-radius: 10px;
 }
 
-button.productBtn {
+button.nProductBtn {
     background-color: darkgreen;
     color: white;
     padding: 10px;
@@ -52,7 +80,7 @@ button.productBtn {
     border-radius: 10px;
     cursor: pointer;
 }
-button.productBtnE {
+button.nProductBtnE {
     background-color: darkgreen;
     color: white;
     padding: 10px;
@@ -64,13 +92,13 @@ button.productBtnE {
     cursor: pointer;
 }
 
-img.productBtnIMG {
+img.nProductBtnIMG {
     width: 258.5px;
     height: 258.5px;
     padding: 5px 10px;
     border-radius: 20px;
 }
-img.productBtnIMGE {
+img.nProductBtnIMGE {
     width: 258.5px;
     height: 258.5px;
     padding: 5px 10px;
@@ -79,6 +107,32 @@ img.productBtnIMGE {
 
 button:hover {
     opacity: 0.8;
+}
+
+#productIMG {
+    width: 500px;
+    height: 500px;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+#productBtnIMG {
+    background-color: darkgreen;
+    color: white;
+    padding: 3px 0px 0px 0px;
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#productIMGB {
+    display: block;
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;
 }
 
 footer {
