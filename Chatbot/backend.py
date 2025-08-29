@@ -4,7 +4,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def chat():
-    return "hello"
+    import ai_logic as ai
+    return ai.output
 
 if __name__ == '__main__':
     app.run(debug=True) 
