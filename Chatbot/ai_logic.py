@@ -20,4 +20,5 @@ response = client.complete(
     model="gpt-4o-mini"
 )
 
-print(response.choices[0].message.content)
+output = response.choices[0].message.content
+print(output)
