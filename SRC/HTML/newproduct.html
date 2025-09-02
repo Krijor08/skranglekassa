@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/SRC/CSS/Main.css">
+    <title>Skranglekassa.no/Nytt Produkt</title>
+</head>
+
+ <!--Header-->
+<header>
+    <h2>Skranglekassa.no</h2>
+</header>
+
+ <!--Navigation Buttons-->
+<nav>
+    <button class="navBtn" onclick="window.location.href='/SRC/HTML/index.html'">
+        Tilbake
+    </button>
+</nav>
+
+ <!--New Product Box-->
+<body>
+    <h1>Nytt Produkt:</h1>
+    <div class="inputpage">
+        <form action="newproduct.php">
+            <label for="image">Bilde</label>
+            <input type="text" id="image" name="image" placeholder="Bilde...">
+
+            <label for="name">Navn *</label>
+            <input type="text" id="name" name="name" placeholder="Navn på produkt..." required>
+
+            <label for="price">Pris</label>
+            <input type="text" id="price" name="price" placeholder="Pris på produkt...">
+
+            <label for="description">Beskrivelse</label>
+            <textarea name="description" id="description" placeholder="Beskrivelse av produktet..." style="height: 200px;"></textarea>
+
+            <label for="specifications">Spesifikasjoner</label>
+            <textarea name="specifications" id="specifications" placeholder="Spesifikasjoner av produktet..." style="height: 200px;"></textarea>
+
+            <h4 id="required">* Påkrevd</h4>
+            <input type="submit" value="Send Inn">
+        </form>
+    </div>
+    <br>
+</body>
+
+ <!--Footer-->
+<footer>
+    <h2>Skranglekassa.no</h2>
+</footer>
+</html>

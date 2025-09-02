@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/SRC/CSS/Main.css">
-    <title>Skranglekassa.no/LoggInn</title>
+    <title>Skranglekassa.no/Logg Inn</title>
 </head>  
 
  <!--Header-->
@@ -19,9 +19,22 @@
     </button>
 </nav>
 
- <!--Text-->
+ <!--Login Box-->
 <body>
     <h1>Logg inn:</h1>
+
+    <div class="inputpage">
+        <form action="loginpage.php">
+            <label for="email">E-Post *</label>
+            <input type="text" id="email" name="email" placeholder="Skriv inn E-Post..." required>
+
+            <label for="password">Passord *</label>
+            <input type="text" id="password" name="password" placeholder="Skriv inn passord..." required>
+            <h4 id="required">* Påkrevd</h4>
+            <input type="submit" value="Send Inn">
+        </form>
+    </div>
+    <br>
 </body>
 
  <!--Footer-->

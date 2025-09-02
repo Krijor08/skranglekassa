@@ -19,9 +19,28 @@
     </button>
 </nav>
 
- <!--Text-->
+ <!--Contact Box-->
 <body>
     <h1>Kontakt:</h1>
+    <div class="inputpage">
+        <form action="contactpage.php">
+            <label for="fname">Fornavn</label>
+            <input type="text" id="fname" name="firstname" placeholder="Ditt fornavn...">
+
+            <label for="lname">Etternavn</label>
+            <input type="text" id="lname" name="firstname" placeholder="Ditt etternavn...">
+
+            <label for="email">E-Post *</label>
+            <input type="text" id="email" name="email" placeholder="Din E-Post..." required>
+
+            <label for="subject">Melding *</label>
+            <textarea name="subject" id="subject" placeholder="Skriv noe her..." style="height: 200px;"></textarea required>
+
+            <h4 id="required">* Påkrevd</h4>
+            <input type="submit" value="Send Inn">
+        </form>
+    </div>
+    <br>
 </body>
 
  <!--Footer-->

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/SRC/CSS/Main.css">
-    <title>Skranglekassa.no/RegistrerBruker</title>
+    <title>Skranglekassa.no/Registrer Bruker</title>
 </head>
 
  <!--Header-->
@@ -19,9 +19,32 @@
     </button>
 </nav>
 
- <!--Text-->
+ <!--Sign up box-->
 <body>
     <h1>Registrer bruker:</h1>
+
+    <div class="inputpage">
+        <form action="loginpage.php">
+            <label for="fname">Fornavn *</label>
+            <input type="text" id="fname" name="firstname" placeholder="Skriv inn fornavn..." required>
+
+            <label for="lname">Etternavn *</label>
+            <input type="text" id="lname" name="lastname" placeholder="Skriv inn etternavn..." required>
+
+            <label for="email">E-Post *</label>
+            <input type="text" id="email" name="email" placeholder="Skriv inn E-Post..." required>
+
+            <label for="cpassword">Lag Passord *</label>
+            <input type="text" id="cpassword" name="createpassword" placeholder="Lag passord..." required>
+
+            <label for="rpassword">Gjenta Passord *</label>
+            <input type="text" id="rpassword" name="repeatpassword" placeholder="Genta passord..." required>
+
+            <h4 id="required">* Påkrevd</h4>
+            <input type="submit" value="Send Inn">
+        </form>
+    </div>
+    <br>
 </body>
 
  <!--Footer-->
