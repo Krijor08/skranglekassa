@@ -14,4 +14,4 @@ def chat():
     return render_template("index.html", aiOutput=AIOutput)
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)

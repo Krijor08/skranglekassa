@@ -10,10 +10,6 @@ client = ChatCompletionsClient(
     api_version="2024-12-01-preview",
 )
 
-#userChat = input("Enter your message to the AI: ")
-#userChat = backend.chat().userInput
-#print("Ai is responding...")
-
 def get_ai_response(userInput: str) -> str:
     response = client.complete(
         messages=[
@@ -23,6 +19,3 @@ def get_ai_response(userInput: str) -> str:
         model="gpt-4o-mini"
     )
     return response.choices[0].message.content
-
-#output = response.choices[0].message.content 
-#print(output)
