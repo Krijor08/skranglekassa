@@ -1,4 +1,5 @@
 import os
+import backend
 from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import UserMessage
 from azure.core.credentials import AzureKeyCredential
@@ -9,16 +10,19 @@ client = ChatCompletionsClient(
     api_version="2024-12-01-preview",
 )
 
-userChat = input("Enter your message to the AI: ")
-print("Ai is responding...")
+#userChat = input("Enter your message to the AI: ")
+#userChat = backend.chat().userInput
+#print("Ai is responding...")
 
-response = client.complete(
-    messages=[
-        {"role": "developer", "content": ""},
-        UserMessage(userChat),
-    ],
-    model="gpt-4o-mini"
-)
+def get_ai_response(userInput: str) -> str:
+    response = client.complete(
+        messages=[
+            {"role": "developer", "content": ""},
+            UserMessage(userInput),
+        ],
+        model="gpt-4o-mini"
+    )
+    return response.choices[0].message.content
 
-output = response.choices[0].message.content
-print(output)
+#output = response.choices[0].message.content 
+#print(output)
