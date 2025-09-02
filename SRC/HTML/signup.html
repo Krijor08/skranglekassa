@@ -24,7 +24,7 @@
     <h1>Registrer bruker:</h1>
 
     <div class="inputpage">
-        <form action="loginpage.php">
+        <form action="signupForm">
             <label for="fname">Fornavn *</label>
             <input type="text" id="fname" name="firstname" placeholder="Skriv inn fornavn..." required>
 
@@ -43,6 +43,26 @@
             <h4 id="required">* Påkrevd</h4>
             <input type="submit" value="Send Inn">
         </form>
+
+        <script>
+            document.getElementById("signupForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                let res = await fetch("http://192.168.20.80:5000/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        fname: document.getElementById("fname").value,
+                        lname: document.getElementById("lname").value,
+                        email: document.getElementById("email").value,
+                        cpassword: document.getElementById("cpassword").value
+                    })
+                });
+
+                let date = await res.json();
+                alert(data.message);
+            });
+        </script>
     </div>
     <br>
 </body>

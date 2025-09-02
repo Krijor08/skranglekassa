@@ -107,7 +107,7 @@ img.nProductBtnIMGE {
 }
 
 button:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 #productIMG {
@@ -170,4 +170,18 @@ h4 {
     font-size: 15px;
     border-left-width: 5px;
     line-height: 5px;
+}
+
+#aiBtn {
+    font-size: 20px;
+    position: fixed;
+    max-width: 150px;
+    top: 87%;
+    left: 91.5%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #8f8f8f;
+    color: white;
+    cursor: pointer;
+    z-index: 1;
 }
