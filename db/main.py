@@ -1,14 +1,29 @@
 import mysql.connector
+import sys
 
-db = mysql.connector.connect(
-	host="localhost",
-	user="Python",    # change these according to your MySQL user credentials,
-	password="Aojvc8_yI"   # or create a new account with these credentials.
+try:
+	db = mysql.connector.connect(
+	user = sys.argv[1],   
+	password = sys.argv[2]
 )
-
-c = db.cursor()
-
-c.execute("""
+	
+	c = db.cursor()
+	c.execute("""
 	USE skranglekassa;
 		  """)
+
+except mysql.connector.ProgrammingError:
+	print("Something went wrong with the database connection")
+	quit()
+
+except IndexError:
+	print("Too few args")
+	quit()
+
+except:
+	print("Something went wrong")
+	quit()
+
+ 
+	
 
