@@ -13,23 +13,32 @@ def connect():
 	)
 
 	c = db.cursor()
-	return c
+	return db, c
 
 
 @app.route("/signup", methods=["POST"])
 def signup():
 	data = request.json
+
+	print("recieved data")
+
 	firstname = data["fname"]
 	lastname = data["lname"]
 	password = data["cpassword"]
 	email = data["email"]
 
 	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+	print("password hashed", hashed)
+	try:
+		db, c = connect()
+		print("connected")
+	except:
+		return jsonify({"message": "connection error"})
 
-	db = connect()
+	try:
+		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord) VALUES (%s, %s, %s, %s)", (firstname, lastname, email, hashed))
+		print("values inserted successfully")
+		return jsonify({"message": "Is good yes"})
+	except:
+		return jsonify({"message": "SQL error"})
 
-	c = db.cursor()
-
-	c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord) VALUES (%s, %s, %s, %s)", (firstname, lastname, email, hashed))
-
-	return jsonify({"message": "Is good yes"})
