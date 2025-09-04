@@ -1,6 +1,6 @@
 import os
 from azure.ai.inference import ChatCompletionsClient
-from azure.ai.inference.models import SystemMessage, UserMessage
+from azure.ai.inference.models import SystemMessage, UserMessage, AssistantMessage
 from azure.core.credentials import AzureKeyCredential
 
 client = ChatCompletionsClient(
@@ -9,12 +9,22 @@ client = ChatCompletionsClient(
     api_version="2024-12-01-preview",
 )
 
+messages=[
+            SystemMessage("You are a helpful assistant that is called Skrotnissen.")
+    ]
+
 def get_ai_response(userInput: str) -> str:
+    global messages
+
+    messages.append(UserMessage(userInput))
+
     response = client.complete(
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant that is called Skrotnissen."},
-            {"role": "user", "content": userInput}
-        ],
+        messages=messages,
         model="gpt-4o-mini"
     )
-    return response.choices[0].message.content
+
+    ai_response = response.choices[0].message.content
+
+    messages.append(AssistantMessage(ai_response))
+
+    return ai_response
