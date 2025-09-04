@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import mysql.connector, bcrypt
 
 app = Flask(__name__)
-
 def connect():
 	
 	db = mysql.connector.connect(
@@ -15,7 +14,8 @@ def connect():
 
 	c = db.cursor()
 	return c
-	
+
+
 @app.route("/signup", methods=["POST"])
 def signup():
 	data = request.json
@@ -30,4 +30,6 @@ def signup():
 
 	c = db.cursor()
 
-	c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord) VALUES (%s, %s, %s)", (firstname, lastname, email, hashed))
+	c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord) VALUES (%s, %s, %s, %s)", (firstname, lastname, email, hashed))
+
+	return jsonify({"message": "Is good yes"})
