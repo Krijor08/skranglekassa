@@ -12,8 +12,8 @@ client = ChatCompletionsClient(
 def get_ai_response(userInput: str) -> str:
     response = client.complete(
         messages=[
-            {"role": "user", "content": userInput},
-            {"role": "system", "content": "You are a helpful assistant that is called Skrotnissen."}
+            {"role": "system", "content": "You are a helpful assistant that is called Skrotnissen."},
+            {"role": "user", "content": userInput}
         ],
         model="gpt-4o-mini"
     )
