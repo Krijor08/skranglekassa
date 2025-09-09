@@ -180,17 +180,17 @@ h4 {
     left: 91.65%;
     border-radius: 5px;
     padding: 5px;
-    background-color: #afafaf;
-    color: white;
+    background-color: #dddddd;
+    color: rgb(44, 44, 44);
     cursor: pointer;
     z-index: 1;
 }
 
 #SidePanel {
     background-color: #f1f1f1;
-    width: 17.7%;
+    width: 25%;
     height: 95%;
-    left: 80.45%;
+    left: 73.15%;
     position: fixed;
     border-radius: 5px;
     padding: 10px;
@@ -199,14 +199,21 @@ h4 {
     z-index: 2;
 }
 
-#closeBtn {
+#inputForm {
+    position: fixed;
+    top: 92.65%;
+    width: 25%;
+}
+
+.AIBtn {
     background-color: forestgreen;
     color: white;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    position: fixed;
-    left: 80.75%;
-    top: 94.65%;
+}
+
+#UserInput {
+    width: 342.5px;
 }

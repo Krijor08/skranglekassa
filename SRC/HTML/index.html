@@ -8,25 +8,39 @@
     <title>Skranglekassa.no</title>
 </head>
 
+<!--AI Button + Side Panel-->
+
+<!--AI Button-->
 <button id="aiBtn" onclick="openSidePanel()">Chat med Ai bot-en vår: Skrotnissen!&#129302;</button>
 
+<!--Side Panel-->
 <section id="SidePanel">
     Wlecome to Skrotnissen AI chatbot!
+    
+    <p>{{aiOutput}}</p>
 
-    <button id="closeBtn" onclick="closeSidePanel()">
-        Close
-    </button>
+    <!--Buttons + Text area-->
+    <div id="inputForm">
+        <button id="closeBtn" class="AIBtn" onclick="closeSidePanel()">
+            Lukk
+        </button>    
+        <input id="UserInput" type="text" name="userInput" placeholder="Skriv her...">
+        <button type="submit" class="AIBtn">Send</button>
+    </div>
 
+    <!--Opening and Closing Functions-->
     <script>
+        //Is by default closed
         document.getElementById("SidePanel").style.zIndex="-1";
         document.getElementById("SidePanel").style.opacity="0%";
         
-
+        //Open panel
         function openSidePanel() {
             document.getElementById("SidePanel").style.zIndex="2";
             document.getElementById("SidePanel").style.opacity="100%";
         }
 
+        //Close panel
         function closeSidePanel() {
             document.getElementById("SidePanel").style.zIndex="-1";
             document.getElementById("SidePanel").style.opacity="0%";
