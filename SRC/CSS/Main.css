@@ -180,31 +180,33 @@ h4 {
     left: 91.65%;
     border-radius: 5px;
     padding: 5px;
-    background-color: #8f8f8f;
+    background-color: #afafaf;
     color: white;
     cursor: pointer;
     z-index: 1;
 }
 
 #SidePanel {
-    background-color: #d1d1d1;
+    background-color: #f1f1f1;
     width: 17.7%;
-    height: 96%;
-    left: 80.8%;
+    height: 95%;
+    left: 80.45%;
     position: fixed;
     border-radius: 5px;
     padding: 10px;
+    border-style: double;
+    border-color: black;
     z-index: 2;
 }
 
 #closeBtn {
-    background-color: rgb(138, 138, 138);
+    background-color: forestgreen;
     color: white;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     position: fixed;
-    left: 81.05%;
-    top: 94.8%;
+    left: 80.75%;
+    top: 94.65%;
 }
