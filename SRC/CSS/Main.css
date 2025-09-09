@@ -94,14 +94,14 @@ button.nProductBtnE {
 }
 
 img.nProductBtnIMG {
-    width: 258.5px;
-    height: 258.5px;
+    width: 259.34px;
+    height: 259.34px;
     padding: 7.5px 10px;
     border-radius: 20px;
 }
 img.nProductBtnIMGE {
-    width: 258.5px;
-    height: 258.5px;
+    width: 259.34px;
+    height: 259.34px;
     padding: 7.5px 10px;
     border-radius: 20px;
 }
@@ -136,7 +136,7 @@ button:hover {
     margin: 0 auto;
 }
 
-input[type=text], select, textarea {
+input[type=text], [type=password], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -176,8 +176,8 @@ h4 {
     font-size: 20px;
     position: fixed;
     max-width: 150px;
-    top: 87%;
-    left: 91.5%;
+    top: 87.1%;
+    left: 91.65%;
     border-radius: 5px;
     padding: 5px;
     background-color: #8f8f8f;
@@ -189,11 +189,11 @@ h4 {
 #SidePanel {
     background-color: #d1d1d1;
     width: 17.7%;
-    height: 97%;
-    left: 81.3%;
+    height: 96%;
+    left: 80.8%;
     position: fixed;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     z-index: 2;
 }
 
@@ -205,6 +205,6 @@ h4 {
     cursor: pointer;
     border-radius: 5px;
     position: fixed;
-    left: 81.55%;
+    left: 81.05%;
     top: 94.8%;
 }

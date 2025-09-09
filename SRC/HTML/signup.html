@@ -35,17 +35,17 @@
             <input type="text" id="email" name="email" placeholder="Skriv inn E-Post..." required>
 
             <label for="cpassword">Lag Passord *</label>
-            <input type="text" id="cpassword" name="createpassword" placeholder="Lag passord..." required>
+            <input type="password" id="cpassword" name="createpassword" placeholder="Lag passord..." required>
 
             <label for="rpassword">Gjenta Passord *</label>
-            <input type="text" id="rpassword" name="repeatpassword" placeholder="Gjenta passord..." required>
+            <input type="password" id="rpassword" name="repeatpassword" placeholder="Gjenta passord..." required>
 
             <h4 id="required">* Påkrevd</h4>
             <input type="submit" value="Send Inn">
         </form>
 
         <script>
-            console.log("hei")
+            console.log("Start")
             document.getElementById("signupForm").addEventListener("submit", async (e) => {
                 e.preventDefault();
 
@@ -57,12 +57,16 @@
                         lname: document.getElementById("lname").value,
                         email: document.getElementById("email").value,
                         cpassword: document.getElementById("cpassword").value
-                        
                     })
-                });console.log("ha det")
+                });
+                console.log("Done")
 
                 let data = await res.json();
                 alert(data.message);
+                console.log("Message sent")
+                console.log("Resetting form")
+                document.getElementById('signupForm').reset()
+                console.log("Form resetted")
             });
         </script>
     </div>
