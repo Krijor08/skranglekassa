@@ -8,7 +8,31 @@
     <title>Skranglekassa.no</title>
 </head>
 
-<button id="aiBtn">Chat med Ai bot-en vår: Skrotnissen!&#129302;</button>
+<button id="aiBtn" onclick="openSidePanel()">Chat med Ai bot-en vår: Skrotnissen!&#129302;</button>
+
+<section id="SidePanel">
+    My greetings
+
+    <button id="closeBtn" onclick="closeSidePanel()">
+        Close
+    </button>
+
+    <script>
+        document.getElementById("SidePanel").style.zIndex="-1";
+        document.getElementById("SidePanel").style.opacity="0%";
+        
+
+        function openSidePanel() {
+            document.getElementById("SidePanel").style.zIndex="2";
+            document.getElementById("SidePanel").style.opacity="100%";
+        }
+
+        function closeSidePanel() {
+            document.getElementById("SidePanel").style.zIndex="-1";
+            document.getElementById("SidePanel").style.opacity="0%";
+        }
+    </script>
+</section>
 
 <!--Header-->
 <header>
@@ -42,6 +66,8 @@
     </button>
     <p>Nye produkter:</p>
 
+
+    
 </body>
 
  <!--Button Section-->

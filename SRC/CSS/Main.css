@@ -185,3 +185,26 @@ h4 {
     cursor: pointer;
     z-index: 1;
 }
+
+#SidePanel {
+    background-color: #d1d1d1;
+    width: 17.7%;
+    height: 97%;
+    left: 81.3%;
+    position: fixed;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 2;
+}
+
+#closeBtn {
+    background-color: rgb(138, 138, 138);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    position: fixed;
+    left: 81.55%;
+    top: 94.8%;
+}

@@ -24,7 +24,7 @@
     <h1>Registrer bruker:</h1>
 
     <div class="inputpage">
-        <form action="signupForm">
+        <form id="signupForm">
             <label for="fname">Fornavn *</label>
             <input type="text" id="fname" name="firstname" placeholder="Skriv inn fornavn..." required>
 
@@ -38,17 +38,18 @@
             <input type="text" id="cpassword" name="createpassword" placeholder="Lag passord..." required>
 
             <label for="rpassword">Gjenta Passord *</label>
-            <input type="text" id="rpassword" name="repeatpassword" placeholder="Genta passord..." required>
+            <input type="text" id="rpassword" name="repeatpassword" placeholder="Gjenta passord..." required>
 
             <h4 id="required">* Påkrevd</h4>
             <input type="submit" value="Send Inn">
         </form>
 
         <script>
+            console.log("hei")
             document.getElementById("signupForm").addEventListener("submit", async (e) => {
                 e.preventDefault();
 
-                let res = await fetch("http://192.168.20.80:5000/signup", {
+                let res = await fetch("http://127.0.0.1:5000/signup", {
                     method: "POST",
                     headers: { "Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -56,10 +57,11 @@
                         lname: document.getElementById("lname").value,
                         email: document.getElementById("email").value,
                         cpassword: document.getElementById("cpassword").value
+                        
                     })
-                });
+                });console.log("ha det")
 
-                let date = await res.json();
+                let data = await res.json();
                 alert(data.message);
             });
         </script>
