@@ -1,17 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 import ai_logic as ai
 
 app = Flask(__name__)
+CORS(app)
 
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-@app.route("/", methods=["POST"])
+@app.route("/chat", methods=["POST"])
 def chat():
-    userInput = request.form["userInput"]
+    data = request.json
+    userInput = data.get("userInput", "")
+
+    if not userInput:
+        return jsonify({"error": "No input provided"}), 400
     AIOutput = ai.get_ai_response(userInput)
-    return render_template("index.html", aiOutput=AIOutput)
+    return jsonify({"aiOutput": AIOutput})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port="5000", debug=True)
