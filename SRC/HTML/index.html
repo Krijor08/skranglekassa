@@ -15,7 +15,7 @@
 
 <!--Side Panel-->
 <section id="SidePanel">
-    Welcome to Skrotnissen AI chatbot!
+    Velkommen til Skrotnissen AI chatbot!
     
     <p id="aiOutput"></p>
 
@@ -32,16 +32,16 @@
     <script>
         //Sends API request to backend, and recives JSON file
         async function sendMessage() {
-        const input = document.getElementById("userInput").value;
- 
-        const res = await fetch("http://localhost:5000/chat", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ userInput: input })
-        });
- 
-        const data = await res.json();
-        document.getElementById("aiOutput").innerText = data.aiOutput;
+            const input = document.getElementById("userInput").value;
+    
+            const res = await fetch("http://localhost:5000/chat", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ userInput: input })
+            });
+            
+            const data = await res.json();
+            document.getElementById("aiOutput").innerText = data.aiOutput;
         }
 
         //Is by default closed
