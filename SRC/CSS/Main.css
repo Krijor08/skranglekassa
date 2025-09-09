@@ -214,6 +214,14 @@ h4 {
     border-radius: 5px;
 }
 
-#UserInput {
+#userInput {
     width: 342.5px;
+}
+
+#aiOutput {
+    font-size: 20px;
+    border-left-width: 5px;
+    line-height: 20px;
+    border-left-style: solid;
+    border-left-color: green;
 }

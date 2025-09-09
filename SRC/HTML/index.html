@@ -15,21 +15,35 @@
 
 <!--Side Panel-->
 <section id="SidePanel">
-    Wlecome to Skrotnissen AI chatbot!
+    Welcome to Skrotnissen AI chatbot!
     
-    <p>{{aiOutput}}</p>
+    <p id="aiOutput"></p>
 
     <!--Buttons + Text area-->
     <div id="inputForm">
         <button id="closeBtn" class="AIBtn" onclick="closeSidePanel()">
             Lukk
         </button>    
-        <input id="UserInput" type="text" name="userInput" placeholder="Skriv her...">
-        <button type="submit" class="AIBtn">Send</button>
+        <input id="userInput" type="text" placeholder="Skriv her...">
+        <button class="AIBtn" onclick="sendMessage()">Send</button>
     </div>
 
     <!--Opening and Closing Functions-->
     <script>
+        //Sends API request to backend, and recives JSON file
+        async function sendMessage() {
+        const input = document.getElementById("userInput").value;
+ 
+        const res = await fetch("http://localhost:5000/chat", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ userInput: input })
+        });
+ 
+        const data = await res.json();
+        document.getElementById("aiOutput").innerText = data.aiOutput;
+        }
+
         //Is by default closed
         document.getElementById("SidePanel").style.zIndex="-1";
         document.getElementById("SidePanel").style.opacity="0%";
