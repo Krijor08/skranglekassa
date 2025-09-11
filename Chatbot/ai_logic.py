@@ -13,8 +13,9 @@ client = ChatCompletionsClient(
 )
 
 messages=[
-            SystemMessage("You are a helpful assistant that is called Skrotnissen.")
-    ]
+    SystemMessage("You are a helpful assistant that is called Skrotnissen."),
+    SystemMessage("You answer in a friendly and concise manner.")
+]
 
 def get_ai_response(userInput: str) -> str:
     global messages
