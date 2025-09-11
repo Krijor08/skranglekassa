@@ -25,13 +25,15 @@
             Lukk
         </button>    
         <input id="userInput" type="text" placeholder="Skriv her...">
-        <button class="AIBtn" onclick="sendMessage()">Send</button>
+        <button id="sendBtn" class="AIBtn" onclick="sendMessage()">Send</button>
     </div>
 
     <!--Opening and Closing Functions-->
     <script>
+        document.getElementById("sendBtn").style.opacity="100%";
         //Sends API request to backend, and recives JSON file
         async function sendMessage() {
+            document.getElementById("sendBtn").style.opacity="0%";
             const input = document.getElementById("userInput").value;
     
             const res = await fetch("http://localhost:5000/chat", {
@@ -42,6 +44,7 @@
             
             const data = await res.json();
             document.getElementById("aiOutput").innerText = data.aiOutput;
+            document.getElementById("sendBtn").style.opacity="100%";
         }
 
         //Is by default closed
