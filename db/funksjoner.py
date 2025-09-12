@@ -1,21 +1,30 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import mysql.connector, bcrypt
 
-app = Flask(__name__, template_folder="../SRC/HTML")
-print(app)
+app = Flask(
+    __name__,
+    template_folder='/home/skranglekassa.local/public_html/SRC/HTML',
+    static_folder='/home/skranglekassa.local/public_html/SRC/CSS'
+)
+
 
 def connect():
-	
+
 	db = mysql.connector.connect(
-	host = "192.168.20.80",
-	user = "åge",   
-	password = "åge",
-	database = "skranglekassa",
+	host = "192.168.40.244",
+	user = "test",
+	password = "test",
+	database = "skra_skranglekassa",
 	port = 3306
 	)
 
 	c = db.cursor()
 	return db, c
+
+@app.route("/")
+def home():
+	print("Is yes")
+	return render_template("index.html")
 
 
 @app.route("/signup", methods=["POST"])
@@ -28,6 +37,7 @@ def signup():
 	lastname = data["lname"]
 	password = data["cpassword"]
 	email = data["email"]
+	bdate = "2000-01-01"
 
 	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 	print("password hashed", hashed)
@@ -38,7 +48,7 @@ def signup():
 		return jsonify({"message": "connection error"})
 
 	try:
-		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord) VALUES (%s, %s, %s, %s)", (firstname, lastname, email, hashed))
+		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
 		print("Executed insertion")
 		db.commit()
 		print("Committed")
@@ -47,6 +57,34 @@ def signup():
 		return jsonify({"message": f"SQL error: {err}"})
 	except:
 		return jsonify({"message": f"Other error: {err}"})
+	finally:
+		c.close()
+		db.close()
+
+
+def sutest():
+	try:
+		db, c = connect()
+	except:
+		return "connection error"
+	
+	firstname = "test"
+	lastname = "test"
+	password = "test"
+	email = "test"
+	bdate = "2000-01-01"
+	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+	print("password hashed", hashed)
+	try:
+		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord, fodselsdato) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
+		print("Executed insertion")
+		db.commit()
+		print("Committed")
+		return "Is good yes"
+	except mysql.connector.Error as err:
+		return f"SQL error: {err}"
+	except:
+		return "other error"
 	finally:
 		c.close()
 		db.close()
