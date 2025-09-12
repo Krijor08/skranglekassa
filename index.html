@@ -15,7 +15,7 @@
     <p id="aiOutput"></p> 
     <br>
     <br>
-
+    <div id="loader"></div>
     <!--Buttons + Text area-->
     <div id="inputForm">
         <button id="closeBtn" class="AIBtn" onclick="closeSidePanel()">
@@ -28,9 +28,11 @@
     <!--Opening and Closing Functions-->
     <script>
         document.getElementById("sendBtn").style.opacity="100%";
+        document.getElementById("loader").style.opacity="0%";
         //Sends API request to backend, and recives JSON file
         async function sendMessage() {
             document.getElementById("sendBtn").style.opacity="0%";
+            document.getElementById("loader").style.opacity="100%";
             const input = document.getElementById("userInput").value;
     
             const res = await fetch("http://localhost:5000/chat", {
@@ -42,6 +44,7 @@
             const data = await res.json();
             document.getElementById("aiOutput").innerText = data.aiOutput;
             document.getElementById("sendBtn").style.opacity="100%";
+            document.getElementById("loader").style.opacity="0%";
         }
 
         //Is by default closed
