@@ -80,36 +80,29 @@ button.nProductBtn {
     background-color: darkgreen;
     color: white;
     padding: 10px;
-    margin-top: 5px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-left: 0px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-button.nProductBtnE {
-    background-color: darkgreen;
-    color: white;
-    padding: 10px;
-    margin-top: 5px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    margin-left: 0px;
     border-radius: 10px;
     cursor: pointer;
 }
 
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: space-evenly;
+}
+
 img.nProductBtnIMG {
-    width: 259.34px;
-    height: 259.34px;
-    padding: 7.5px 10px;
+    max-width: 90%;
+    padding: 10px;
     border-radius: 20px;
 }
-img.nProductBtnIMGE {
-    width: 259.34px;
-    height: 259.34px;
-    padding: 7.5px 10px;
-    border-radius: 20px;
+
+.productText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 button:hover {
@@ -172,14 +165,12 @@ input[type=submit]:hover {
     padding: 20px;
 }
 
-
-
 #aiBtn {
     font-size: 20px;
     position: fixed;
     max-width: 150px;
-    top: 87.1%;
-    left: 91.65%;
+    right: 10px;
+    bottom: 10px;
     border-radius: 5px;
     padding: 5px;
     background-color: #dddddd;
@@ -189,11 +180,13 @@ input[type=submit]:hover {
 }
 
 #SidePanel {
+    overflow: auto;
     background-color: #f1f1f1;
-    width: 25%;
-    height: 95%;
-    left: 73.15%;
     position: fixed;
+    width: 445px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
     border-radius: 5px;
     padding: 10px;
     border-style: double;
@@ -203,8 +196,7 @@ input[type=submit]:hover {
 
 #inputForm {
     position: fixed;
-    top: 92.65%;
-    width: 25%;
+    bottom: 7.5px;
 }
 
 .AIBtn {
@@ -217,7 +209,7 @@ input[type=submit]:hover {
 }
 
 #userInput {
-    width: 349px;
+    width: 317.5px;
 }
 
 #aiOutput {
@@ -227,3 +219,4 @@ input[type=submit]:hover {
     border-left-style: solid;
     border-left-color: green;
 }
+
