@@ -53,6 +53,12 @@ h3 {
     border-left-color: green;
 }
 
+h4 {
+    font-size: 15px;
+    border-left-width: 5px;
+    line-height: 5px;
+}
+
 p {
     font-size: 25px;
     border-left-width: 5px;
@@ -166,11 +172,7 @@ input[type=submit]:hover {
     padding: 20px;
 }
 
-h4 {
-    font-size: 15px;
-    border-left-width: 5px;
-    line-height: 5px;
-}
+
 
 #aiBtn {
     font-size: 20px;
@@ -220,7 +222,7 @@ h4 {
 
 #aiOutput {
     font-size: 20px;
-    border-left-width: 5px;
+    border-left-width: 2.5px;
     line-height: 20px;
     border-left-style: solid;
     border-left-color: green;
