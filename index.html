@@ -8,10 +8,6 @@
     <title>Skranglekassa.no</title>
 </head>
 
-<!--AI Button + Side Panel-->
-
-<!--AI Button-->
-
 <!--Side Panel-->
 <section id="SidePanel">
     <div>Velkommen til Skrotnissen AI chatbot!</div>
@@ -50,18 +46,21 @@
 
         //Is by default closed
         document.getElementById("SidePanel").style.zIndex="-1";
-        document.getElementById("SidePanel").style.opacity="0%";
+        document.getElementById("SidePanel").style.visibility="hidden";
+        document.getElementById("aiBtn").style.visibility="visible";
         
         //Open panel
         function openSidePanel() {
             document.getElementById("SidePanel").style.zIndex="2";
-            document.getElementById("SidePanel").style.opacity="100%";
+            document.getElementById("SidePanel").style.visibility="visible";
+            document.getElementById("aiBtn").style.visibility="hidden";
         }
 
         //Close panel
         function closeSidePanel() {
             document.getElementById("SidePanel").style.zIndex="-1";
-            document.getElementById("SidePanel").style.opacity="0%";
+            document.getElementById("SidePanel").style.visibility="hidden";
+            document.getElementById("aiBtn").style.visibility="visible";
         }
     </script>
 </section>
@@ -173,6 +172,7 @@
     <h2>Skranglekassa.no</h2>
 </footer>
 
+<!--AI Button-->
+
 <button id="aiBtn" onclick="openSidePanel()">Chat med Ai bot-en vår: Skrotnissen!&#129302;</button>
 </html>
-

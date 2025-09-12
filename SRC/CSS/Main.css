@@ -62,7 +62,7 @@ h4 {
 p {
     font-size: 25px;
     border-left-width: 5px;
-    line-height: 5px;
+    line-height: 25px;
     border-left-style: solid;
     border-left-color: green;
 }
@@ -110,8 +110,8 @@ button:hover {
 }
 
 #productIMG {
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: auto;
     padding: 5px 10px;
     border-radius: 5px;
 }
@@ -193,6 +193,11 @@ input[type=submit]:hover {
     border-color: black;
     z-index: 2;
 }
+
+#SidePanel:not(:hover) {
+    opacity: 0.35;
+}
+
 
 #inputForm {
     position: fixed;
