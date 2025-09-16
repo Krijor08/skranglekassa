@@ -14,11 +14,14 @@ client = ChatCompletionsClient(
 
 messages=[
     SystemMessage("You are a helpful assistant that is called Skrotnissen."),
-    SystemMessage("You answer in a friendly and concise manner.")
+    SystemMessage("You answer in a friendly and concise manner."),
+    SystemMessage("You help users with their finding products in our store.")
 ]
 
-def get_ai_response(userInput: str) -> str:
+def get_ai_response(userInput: str, DB: dict) -> str:
     global messages
+
+    messages.append(SystemMessage(f"The following is a list of products available in the store: {DB}"))
 
     messages.append(UserMessage(userInput))
 
