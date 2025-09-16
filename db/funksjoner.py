@@ -3,8 +3,8 @@ import mysql.connector, bcrypt
 
 app = Flask(
     __name__,
-    template_folder='/home/skranglekassa.local/public_html/SRC/HTML',
-    static_folder='/home/skranglekassa.local/public_html/SRC/CSS'
+    template_folder='../SRC/HTML',
+    static_folder='../SRC'
 )
 
 
@@ -65,8 +65,8 @@ def signup():
 def sutest():
 	try:
 		db, c = connect()
-	except:
-		return "connection error"
+	except mysql.connector.Error as err:
+		return f"connection error: {err}"
 	
 	firstname = "test"
 	lastname = "test"
