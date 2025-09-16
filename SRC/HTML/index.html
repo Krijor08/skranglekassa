@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="/SRC/CSS/Main.css">
     <link rel="script" href="/SRC/JS/Main.js">
     <title>Skranglekassa.no</title>
+    <link rel="icon" type="image/x-icon" href="/IMG/favicon.ico">
 </head>
 
 <!--Side Panel-->
 <section id="SidePanel">
     <div>Velkommen til Skrotnissen AI chatbot!</div>
-    
+    <img id="robotIMG" src="/IMG/robot-nobg.png" alt="Robot" style="width: 30px; height: auto;"></img>
     <p id="aiOutput"></p> 
     <br>
     <br>
@@ -29,6 +30,7 @@
     <script>
         document.getElementById("sendBtn").style.opacity="100%";
         document.getElementById("loader").style.opacity="0%";
+        document.getElementById("robotIMG").style.opacity="0%"
         //Sends API request to backend, and recives JSON file
         async function sendMessage() {
             document.getElementById("sendBtn").style.opacity="0%";
@@ -45,6 +47,7 @@
             document.getElementById("aiOutput").innerText = data.aiOutput;
             document.getElementById("sendBtn").style.opacity="100%";
             document.getElementById("loader").style.opacity="0%";
+            document.getElementById("robotIMG").style.opacity="100%"
         }
 
         //Is by default closed
@@ -177,5 +180,5 @@
 
 <!--AI Button-->
 
-<button id="aiBtn" onclick="openSidePanel()">Chat med Ai bot-en vår: Skrotnissen!&#129302;</button>
+<button id="aiBtn" onclick="openSidePanel()">Chat med Ai bot-en vår: Skrotnissen!<img src="/IMG/robot-nobg.png" alt="Robot" style="width: 40px; height: auto;"></img></button>
 </html>
