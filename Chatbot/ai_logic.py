@@ -18,10 +18,8 @@ messages=[
     SystemMessage("You help users with their finding products in our store.")
 ]
 
-def get_ai_response(userInput: str, DB: dict) -> str:
+def get_ai_response(userInput: str) -> str:
     global messages
-
-    messages.append(SystemMessage(f"The following is a list of products available in the store: {DB}"))
 
     messages.append(UserMessage(userInput))
 

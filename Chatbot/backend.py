@@ -1,13 +1,9 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import ai_logic as ai
-import json
 
 app = Flask(__name__)
 CORS(app)
-
-with open("Chatbot/data.json", "r", encoding="utf-8") as f:
-    DB = json.load(f)
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -16,7 +12,7 @@ def chat():
 
     if not userInput:
         return jsonify({"error": "No input provided"}), 400
-    AIOutput = ai.get_ai_response(userInput, DB)
+    AIOutput = ai.get_ai_response(userInput)
     return jsonify({"aiOutput": AIOutput})
 
 if __name__ == "__main__":
