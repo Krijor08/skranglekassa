@@ -28,6 +28,16 @@
 
     <!--Opening and Closing Functions-->
     <script>
+        const input = document.getElementById('userInput');
+
+        input.addEventListener('keydown', function(event) {
+            // Check if the key pressed is Enter
+            if (event.key === 'Enter') {
+                sendMessage(); // Call your function
+                input.value = ''; // Optional: clear the input after sending
+            }
+        });
+        
         document.getElementById("sendBtn").style.opacity="100%";
         document.getElementById("loader").style.opacity="0%";
         document.getElementById("robotIMG").style.opacity="0%"
