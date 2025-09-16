@@ -135,8 +135,8 @@ button:hover {
     margin: 0 auto;
 }
 
-input[type=text], [type=password], select, textarea {
-    width: 100%;
+input[type=text], [type=password], [type=date], select, textarea {
+    width: 475px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -250,4 +250,12 @@ input[type=submit]:hover {
 #robotIMG {
     position: relative;
     top: 20px;
+}
+
+#logoIMG {
+    width: 150px;
+    height: auto;
+    position: absolute;
+    left: 500px;
+    top: 150px;
 }

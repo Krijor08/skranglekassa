@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/Main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main.css') }}">
     <title>Skranglekassa.no/ProduktBilde</title>
-    <link rel="icon" type="image/x-icon" href="../../IMG/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='IMG/favicon.ico') }}">
 </head>
 
  <!--Image-->
 <body>
     <div>
-        <img id="productIMGB" src="../../IMG/Sko.jpg" alt="Bildet av produktet">
+        <img id="productIMGB" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bildet av produktet">
     </div>
 </body>
 </html>

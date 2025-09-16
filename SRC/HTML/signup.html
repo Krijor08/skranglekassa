@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/Main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main.css') }}">
     <title>Skranglekassa.no/Registrer Bruker</title>
-    <link rel="icon" type="image/x-icon" href="../../IMG/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='IMG/favicon.ico') }}">
 </head>
 
  <!--Header-->
@@ -27,19 +27,34 @@
     <div class="inputpage">
         <form id="signupForm">
             <label for="fname">Fornavn *</label>
+            <br>
             <input type="text" id="fname" name="firstname" placeholder="Skriv inn fornavn..." required>
+            <br>
 
             <label for="lname">Etternavn *</label>
+            <br>
             <input type="text" id="lname" name="lastname" placeholder="Skriv inn etternavn..." required>
+            <br>
 
             <label for="email">E-Post *</label>
+            <br>
             <input type="text" id="email" name="email" placeholder="Skriv inn E-Post..." required>
+            <br>
 
+            <label for="birthday">Fødselsdag</label>
+            <br>
+            <input type="date" id="birthday">
+            <br>
+            
             <label for="cpassword">Lag Passord *</label>
+            <br>
             <input type="password" id="cpassword" name="createpassword" placeholder="Lag passord..." required>
+            <br>
 
             <label for="rpassword">Gjenta Passord *</label>
+            <br>
             <input type="password" id="rpassword" name="repeatpassword" placeholder="Gjenta passord..." required>
+            <br>
 
             <h4 id="required">* Påkrevd</h4>
             <input type="submit" value="Send Inn">
