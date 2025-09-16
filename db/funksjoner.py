@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, render_template
-import mysql.connector, bcrypt
+from flask_cors import CORS
+import ai_logic as ai
+import mysql.connector, bcrypt, datetime
 
 app = Flask(
     __name__,
@@ -27,25 +29,39 @@ def home():
 	return render_template("index.html")
 
 
+# Eskil code
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.json
+    userInput = data.get("userInput", "")
+
+    if not userInput:
+        return jsonify({"error": "No input provided"}), 400
+    AIOutput = ai.get_ai_response(userInput)
+    return jsonify({"aiOutput": AIOutput})
+
+
 @app.route("/signup", methods=["POST"])
 def signup():
-	data = request.json
-
-	print("recieved data")
+	try:
+		data = request.json
+	except:
+		return jsonify({"Error": "could not recieve data"})
 
 	firstname = data["fname"]
 	lastname = data["lname"]
 	password = data["cpassword"]
 	email = data["email"]
-	bdate = "2000-01-01"
+	bdate = datetime.datetime(data["byear"], data["bmonth"], data["bday"])
+	
 
 	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 	print("password hashed", hashed)
 	try:
 		db, c = connect()
 		print("connected")
-	except:
-		return jsonify({"message": "connection error"})
+	except mysql.connector.Error as err:
+		return jsonify({"Error": err})
 
 	try:
 		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
