@@ -90,17 +90,6 @@
 
  <!--Navigation Buttons-->
 <nav>
-    <!--
-    <button class="navBtn" onclick="window.location.href='{{ login_url }}'">
-        Logg Inn
-    </button>
-    <button class="navBtn" onclick="window.location.href='{{ signup_url }}'">
-        Registrer Bruker
-    </button>
-    <button class="navBtn" onclick="window.location.href='{{ contact_url }}'">
-        Kontakt
-    </button>
-    -->
     <a href="{{ url_for('loginPage')}}" class="navBtn">Logg Inn</a>
     <a href="{{ url_for('signupPage')}}" class="navBtn">Registrer Bruker</a>
     <a href="{{ url_for('contactPage')}}" class="navBtn">Kontakt</a>    
@@ -112,12 +101,8 @@
     <h1 style="color: green;">Skranglekassa.no!</h1>
     <p>Brukt og nytt, til en <b><i>rimelig</i></b> pris!</p>
     <br>
-    <button class="navBtn" onclick="window.location.href='./allproducts.html'">
-        -&gt; Alle produkter
-    </button>
-    <button class="navBtn" onclick="window.location.href='./newproduct.html'">
-        + Legg til produkt
-    </button>
+    <a href="{{ url_for('alleProducts')}}" class="navBtn"> -&gt; Alle produkter</a>  
+    <a href="{{ url_for('newProduct')}}" class="navBtn">+ Legg til produkt</a>  
     <p>Nye produkter:</p>
 
 
@@ -127,66 +112,66 @@
  <!--Button Section-->
 <main>
     <div class="productGrid">
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
-        <button class="nProductBtn" onclick="window.location.href='./product.html'">
+        </a>  
+        <a href="{{ url_for('productPage')}}" class="navBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
             <div class="productText">Sko</div> <div> - <i>100,-</i></div>
-        </button>
+        </a>  
     </div>
 </main>
 
