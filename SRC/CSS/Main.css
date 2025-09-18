@@ -67,7 +67,7 @@ p {
     border-left-color: green;
 }
 
-button.navBtn {
+a.navBtn {
     background-color: darkgreen;
     color: white;
     padding: 10px 15px;
