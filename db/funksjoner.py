@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
 import ai_logic as ai
-import mysql.connector, bcrypt, datetime
+import mysql.connector, bcrypt, datetime, re
 
 app = Flask(
     __name__,
@@ -49,7 +49,7 @@ def loginPage():
 @app.route("/signup")
 def signupPage():
 	print("signup page")
-	return render_template("login.html")
+	return render_template("signup.html")
 
 
 @app.route("/signup", methods=["POST"])
@@ -62,8 +62,11 @@ def signup():
 	firstname = data["fname"]
 	lastname = data["lname"]
 	password = data["cpassword"]
+	bdate = data["birthdate"]
 	email = data["email"]
-	bdate = datetime.datetime(data["byear"], data["bmonth"], data["bday"])
+
+	bdateSplit = re.split("", bdate)
+	bdate = datetime(bdateSplit)
 	
 
 	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
@@ -88,6 +91,17 @@ def signup():
 		c.close()
 		db.close()
 
+@app.route("/newproduct")
+def newProductPage():
+	return render_template("newproduct.html")
+
+@app.route("/allproducts")
+def AllProductsPage():
+	return render_template("allproducts.html")
+
+@app.route("/product")
+def productPage():
+	return render_template("product.html")
 
 def sutest():
 	try:
@@ -119,4 +133,13 @@ def sutest():
 @app.route("/")
 def home():
 	print(app.url_map)
-	return render_template("index.html", contactPage_url=url_for("contactPage"), signupPage_url=url_for("signupPage"), loginPage_url=url_for("loginPage"))
+	return render_template(
+		"index.html", 
+		contactPage_url=url_for("contactPage"), 
+		signupPage_url=url_for("signupPage"), 
+		loginPage_url=url_for("loginPage"), 
+		AllProductsPage_url=url_for("allProductsPage"),
+		newProductPage_url=url_for("newProductPage"),
+		productPage_url=url_for("productPage"),
+		home_url=url_for("home")
+	)
