@@ -90,15 +90,20 @@
 
  <!--Navigation Buttons-->
 <nav>
-    <button class="navBtn" onclick="window.location.href='./login.html'">
-        Logg inn
+    <!--
+    <button class="navBtn" onclick="window.location.href='{{ login_url }}'">
+        Logg Inn
     </button>
-    <button class="navBtn" onclick="window.location.href='./signup.html'">
+    <button class="navBtn" onclick="window.location.href='{{ signup_url }}'">
         Registrer Bruker
     </button>
-    <button class="navBtn" onclick="window.location.href='./contact.html'">
+    <button class="navBtn" onclick="window.location.href='{{ contact_url }}'">
         Kontakt
     </button>
+    -->
+    <a href="{{ url_for('login')}}" class="navBtn">Logg Inn</a>
+    <a href="{{ url_for('signup')}}" class="navBtn">Registrer Bruker</a>
+    <a href="{{ url_for('contact')}}" class="navBtn">Kontakt</a>    
 </nav>
 
  <!--Home Screen Text-->
