@@ -1,12 +1,12 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
 import ai_logic as ai
 import mysql.connector, bcrypt, datetime
 
 app = Flask(
     __name__,
-    template_folder='../SRC/HTML',
-    static_folder='../SRC'
+    template_folder='../SRC/HTML/',
+    static_folder='../SRC/'
 )
 
 
@@ -23,11 +23,6 @@ def connect():
 	c = db.cursor()
 	return db, c
 
-@app.route("/")
-def home():
-	print("Is yes")
-	return render_template("index.html")
-
 
 # Eskil code
 @app.route("/chat", methods=["POST"])
@@ -39,6 +34,22 @@ def chat():
         return jsonify({"error": "No input provided"}), 400
     AIOutput = ai.get_ai_response(userInput)
     return jsonify({"aiOutput": AIOutput})
+
+
+@app.route("/contact")
+def contactPage():
+	print("contact", app.route)
+	return render_template("contact.html")
+
+@app.route("/login")
+def loginPage():
+	print("loginpage")
+	return render_template("login.html")
+
+@app.route("/signup")
+def signupPage():
+	print("signup page")
+	return render_template("login.html")
 
 
 @app.route("/signup", methods=["POST"])
@@ -104,3 +115,8 @@ def sutest():
 	finally:
 		c.close()
 		db.close()
+
+@app.route("/")
+def home():
+	print(app.url_map)
+	return render_template("index.html", contactPage_url=url_for("contactPage"), signupPage_url=url_for("signupPage"), loginPage_url=url_for("loginPage"))
