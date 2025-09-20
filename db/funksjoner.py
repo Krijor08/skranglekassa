@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
-import ai_logic as ai
-import mysql.connector, bcrypt, datetime
+#import ai_logic as ai
+import mysql.connector, bcrypt, datetime, re
 
 app = Flask(
     __name__,
@@ -25,65 +25,94 @@ def connect():
 
 
 # Eskil code
-@app.route("/chat", methods=["POST"])
-def chat():
-    data = request.json
-    userInput = data.get("userInput", "")
-
-    if not userInput:
-        return jsonify({"error": "No input provided"}), 400
-    AIOutput = ai.get_ai_response(userInput)
-    return jsonify({"aiOutput": AIOutput})
+#@app.route("/chat", methods=["POST"])
+#def chat():
+#    data = request.json
+#    userInput = data.get("userInput", "")
+#
+#    if not userInput:
+#        return jsonify({"error": "No input provided"}), 400
+#    AIOutput = ai.get_ai_response(userInput)
+#    return jsonify({"aiOutput": AIOutput})
 
 
 @app.route("/contact")
 def contactPage():
-	print("contact", app.route)
+	print("Contact page")
 	return render_template("contact.html")
+
 
 @app.route("/login")
 def loginPage():
-	print("loginpage")
+	print("Login page")
 	return render_template("login.html")
+
 
 @app.route("/signup")
 def signupPage():
-	print("signup page")
-	return render_template("login.html")
+	print("Signup page")
+	return render_template("signup.html")
 
 
-@app.route("/signup", methods=["POST"])
-def signup():
+@app.route("/allproducts")
+def allProductsPage():
+	print("All products")
+	return render_template("allproducts.html")
+
+
+@app.route("/newproduct")
+def newProductPage():
+	print("New product page")
+	return render_template("newproduct.html")
+
+
+@app.route("/product")
+def productPage():
+	print("Product page")
+	return render_template("product.html")
+
+
+def retrieve():
 	try:
 		data = request.json
-	except:
-		return jsonify({"Error": "could not recieve data"})
+		return data
+	except Exception as err:
+		print("Retrieve error:", err)
+		return jsonify({"message": "could not recieve data"}), 400
+	
+	
+@app.route("/signup", methods=["POST"])
+def signup():
+	data = retrieve()
 
 	firstname = data["fname"]
 	lastname = data["lname"]
 	password = data["cpassword"]
 	email = data["email"]
-	bdate = datetime.datetime(data["byear"], data["bmonth"], data["bday"])
-	
+	bdate = data["birthdate"]
 
 	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 	print("password hashed", hashed)
+
 	try:
 		db, c = connect()
 		print("connected")
 	except mysql.connector.Error as err:
-		return jsonify({"Error": err})
+		print("Conenction error", err)
+		return jsonify({"message": "Database error"}), 500 # Internal Server Error
 
 	try:
-		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
+		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord, fodselsdag) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
 		print("Executed insertion")
 		db.commit()
 		print("Committed")
-		return jsonify({"message": "Is good yes"})
+		return jsonify({"message": "User created successfully"}), 201 # Created
 	except mysql.connector.Error as err:
-		return jsonify({"message": f"SQL error: {err}"})
-	except:
-		return jsonify({"message": f"Other error: {err}"})
+		print("Database error:", err)
+		return jsonify({"message": "Database error"}), 449 # Retry With (bad user input)
+	except Exception as err:
+		print("Other error:", err)
+		return jsonify({"message": "Unexpected error"}), 500 # Internal Server Error
 	finally:
 		c.close()
 		db.close()
@@ -116,7 +145,16 @@ def sutest():
 		c.close()
 		db.close()
 
+
 @app.route("/")
 def home():
 	print(app.url_map)
-	return render_template("index.html", contactPage_url=url_for("contactPage"), signupPage_url=url_for("signupPage"), loginPage_url=url_for("loginPage"))
+	return render_template(
+		"index.html", 
+		contactPage_url=url_for("contactPage"),
+		signupPage_url=url_for("signupPage"),
+		loginPage_url=url_for("loginPage"),
+		allProductsPage_url=url_for("allProductsPage"),
+		newProductPage_url=url_for("newProductPage"),
+		productPage_url=url_for("productPage")
+		)
