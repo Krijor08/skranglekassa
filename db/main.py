@@ -1,5 +1,4 @@
 from funksjoner import *
-CORS(app)
 
 print(app)
 print(app.template_folder)

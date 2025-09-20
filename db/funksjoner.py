@@ -1,13 +1,15 @@
 from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
-#import ai_logic as ai
-import mysql.connector, bcrypt, datetime, re
+import ai_logic as ai
+import mysql.connector, bcrypt
 
 app = Flask(
     __name__,
     template_folder='../SRC/HTML/',
     static_folder='../SRC/'
 )
+
+CORS(app)
 
 
 def connect():
@@ -25,15 +27,15 @@ def connect():
 
 
 # Eskil code
-#@app.route("/chat", methods=["POST"])
-#def chat():
-#    data = request.json
-#    userInput = data.get("userInput", "")
-#
-#    if not userInput:
-#        return jsonify({"error": "No input provided"}), 400
-#    AIOutput = ai.get_ai_response(userInput)
-#    return jsonify({"aiOutput": AIOutput})
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.json
+    userInput = data.get("userInput", "")
+
+    if not userInput:
+        return jsonify({"error": "No input provided"}), 400
+    AIOutput = ai.get_ai_response(userInput)
+    return jsonify({"aiOutput": AIOutput})
 
 
 @app.route("/contact")
@@ -113,34 +115,6 @@ def signup():
 	except Exception as err:
 		print("Other error:", err)
 		return jsonify({"message": "Unexpected error"}), 500 # Internal Server Error
-	finally:
-		c.close()
-		db.close()
-
-
-def sutest():
-	try:
-		db, c = connect()
-	except mysql.connector.Error as err:
-		return f"connection error: {err}"
-	
-	firstname = "test"
-	lastname = "test"
-	password = "test"
-	email = "test"
-	bdate = "2000-01-01"
-	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-	print("password hashed", hashed)
-	try:
-		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord, fodselsdato) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
-		print("Executed insertion")
-		db.commit()
-		print("Committed")
-		return "Is good yes"
-	except mysql.connector.Error as err:
-		return f"SQL error: {err}"
-	except:
-		return "other error"
 	finally:
 		c.close()
 		db.close()
