@@ -90,9 +90,9 @@
 
  <!--Navigation Buttons-->
 <nav>
-    <a href="{{ url_for('loginPage')}}" class="navBtn">Logg Inn</a>
-    <a href="{{ url_for('signupPage')}}" class="navBtn">Registrer Bruker</a>
-    <a href="{{ url_for('contactPage')}}" class="navBtn">Kontakt</a>    
+    <a href="{{ url_for('loginPage')}}" class="navBtn">Logg Inn <img class="homeIMG" src="{{ url_for('static', filename='IMG/login-nobg.png') }}" alt="Logg inn"></img></a></a>
+    <a href="{{ url_for('signupPage')}}" class="navBtn">Registrer Bruker <img class="homeIMG" src="{{ url_for('static', filename='IMG/signup-nobg.png') }}" alt="Registrer bruker"></img></a></a>
+    <a href="{{ url_for('contactPage')}}" class="navBtn">Kontakt <img class="homeIMG" src="{{ url_for('static', filename='IMG/contact-nobg.png') }}" alt="Kotnakt"></img></a></a>    
 </nav>
 
  <!--Home Screen Text-->
@@ -101,8 +101,8 @@
     <h1 style="color: green;">Skranglekassa.no!</h1>
     <p>Brukt og nytt, til en <b><i>rimelig</i></b> pris!</p>
     <br>
-    <a href="{{ url_for('allProductsPage')}}" class="navBtn"> -&gt; Alle produkter</a>  
-    <a href="{{ url_for('newProductPage')}}" class="navBtn">+ Legg til produkt</a>  
+    <a href="{{ url_for('allProductsPage')}}" class="navBtn"> -&gt; Alle produkter <img class="homeIMG" id="productNavIMG" src="{{ url_for('static', filename='IMG/all_products-nobg.png') }}" alt="Alle produkter"></img></a>  
+    <a href="{{ url_for('newProductPage')}}" class="navBtn">+ Legg til produkt <img class="homeIMG" src="{{ url_for('static', filename='IMG/add_product-nobg.png') }}" alt="Legg til produkt"></img></a>  
     <p>Nye produkter:</p>
 
 
@@ -112,65 +112,65 @@
  <!--Button Section-->
 <main>
     <div class="productGrid">
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
-        <a href="{{ url_for('productPage')}}" class="navBtn">
+        <a href="{{ url_for('productPage')}}" class="productBtn">
             <img class="nProductBtnIMG" src="{{ url_for('static', filename='IMG/Sko.jpg') }}" alt="Bilde av produktet">
             <br>
-            <div class="productText">Sko</div> <div> - <i>100,-</i></div>
+            <div class="productText">Sko</div> <div class="productText"><i>100,-</i></div>
         </a>  
     </div>
 </main>
