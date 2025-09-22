@@ -96,60 +96,32 @@ def signup():
 
 	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 	print("password hashed", hashed)
+	
 
 	try:
 		db, c = connect()
 		print("connected")
-	except mysql.connector.Error as err:
-		print("Conenction error", err)
-		return jsonify({"message": "Database error"}), 500 # Internal Server Error
 
-	try:
 		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord, fodselsdag) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
 		print("Executed insertion")
+
 		db.commit()
 		print("Committed")
+
 		return jsonify({"message": "User created successfully"}), 201 # Created
+	
 	except mysql.connector.Error as err:
 		print("Database error:", err)
 		return jsonify({"message": "Database error"}), 449 # Retry With (bad user input)
+	
 	except Exception as err:
 		print("Other error:", err)
 		return jsonify({"message": "Unexpected error"}), 500 # Internal Server Error
-	finally:
-		c.close()
-		db.close()
-
-@app.route("/newproduct")
-def newProductPage():
-	return render_template("newproduct.html")
-
-def sutest():
-	try:
-		db, c = connect()
-	except mysql.connector.Error as err:
-		return f"connection error: {err}"
 	
-	firstname = "test"
-	lastname = "test"
-	password = "test"
-	email = "test"
-	bdate = "2000-01-01"
-	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-	print("password hashed", hashed)
-	try:
-		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord, fodselsdato) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
-		print("Executed insertion")
-		db.commit()
-		print("Committed")
-		return "Is good yes"
-	except mysql.connector.Error as err:
-		return f"SQL error: {err}"
-	except:
-		return "other error"
 	finally:
 		c.close()
 		db.close()
+
 
 @app.route("/")
 def home():
@@ -161,5 +133,5 @@ def home():
 		loginPage_url=url_for("loginPage"),
 		allProductsPage_url=url_for("allProductsPage"),
 		newProductPage_url=url_for("newProductPage"),
-		)
 		productPage_url=url_for("productPage")
+		)
