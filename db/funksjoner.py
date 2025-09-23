@@ -74,6 +74,11 @@ def productPage():
 	return render_template("product.html")
 
 
+@app.route("/productimage")
+def productImage():
+	return render_template("productimage.html")
+
+
 def retrieve():
 	try:
 		data = request.json
@@ -133,5 +138,6 @@ def home():
 		loginPage_url=url_for("loginPage"),
 		allProductsPage_url=url_for("allProductsPage"),
 		newProductPage_url=url_for("newProductPage"),
+		image_url=url_for("productImage"),
 		productPage_url=url_for("productPage")
 		)
