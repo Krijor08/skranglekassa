@@ -1,13 +1,24 @@
 body {
     background-color: #f1f1f1;
-    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-header, footer {
+header {
+    background-color:green;
+    color: white;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+footer {
     background-color:green;
     color: white;
     padding: 10px 10px;
     margin-bottom: 10px;
+    margin-top: 10px;
     border-radius: 5px;
 }
 
@@ -128,6 +139,32 @@ img.nProductBtnIMG {
     padding: 10px;
     border-radius: 20px;
     margin-left: 1.5%;
+}
+
+#productIMG {
+    width: 430px;
+    height: auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+#productBtnIMG {
+    margin-top: 20px;
+    display: inline-block;
+    height: 450px;
+    background-color: darkgreen;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#productIMGB {
+    display: block;
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;
 }
 
 input[type=text], [type=password], [type=date], select, textarea {
