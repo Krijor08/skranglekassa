@@ -15,7 +15,7 @@
 <section id="SidePanel">
     <div>Velkommen til Skrotnissen AI chatbot!</div>
     <img id="robotIMG" src="{{ url_for('static', filename='IMG/robot-nobg.png') }}" alt="Robot" style="width: 30px; height: auto;"></img>
-    <p id="aiOutput"></p> 
+    <p id="output"></p> 
     <br>
     <br>
     <div id="loader"></div>
@@ -30,33 +30,38 @@
 
     <!--Opening and Closing Functions-->
     <script>
+        chatLog = [];
         const input = document.getElementById('userInput');
 
         input.addEventListener('keydown', function(event) {
             // Check if the key pressed is Enter
             if (event.key === 'Enter') {
                 sendMessage(); // Call your function
-                input.value = ''; // Optional: clear the input after sending
+                //input.value = ''; // Optional: clear the input after sending 
             }
+
         });
+        
         
         document.getElementById("sendBtn").style.opacity="100%";
         document.getElementById("loader").style.opacity="0%";
         document.getElementById("robotIMG").style.opacity="0%"
         //Sends API request to backend, and recives JSON file
         async function sendMessage() {
+            
             document.getElementById("sendBtn").style.opacity="0%";
             document.getElementById("loader").style.opacity="100%";
             const input = document.getElementById("userInput").value;
-    
             const res = await fetch("http://localhost:5000/chat", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({ userInput: input })
             });
-            
+
+
             const data = await res.json();
-            document.getElementById("aiOutput").innerText = data.aiOutput;
+            chatLog.push("↓Bruker↓:", "<br>", input, "<br>", "<br>", "↓Skrotnissen↓:", "<br>", data.aiOutput, "<br>", "<br>");
+            document.getElementById("output").innerHTML = chatLog.join("");
             document.getElementById("sendBtn").style.opacity="100%";
             document.getElementById("loader").style.opacity="0%";
             document.getElementById("robotIMG").style.opacity="100%"
