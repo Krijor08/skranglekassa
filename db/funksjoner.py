@@ -70,6 +70,14 @@ def signupPage():
 @app.route("/allproducts")
 def allProductsPage():
 	print("All products")
+
+	db, c = connect()
+
+	c.execute("""
+		SELECT * FROM oppforinger
+		ORDER BY sist_endret;
+	""")
+
 	return render_template("allproducts.html")
 
 
@@ -97,7 +105,7 @@ def signup():
 		data = retrieve()
 	except Exception as err:
 		print("Retrieve error:", err)
-		return jsonify({"message": "could not recieve data"}), 400
+		return jsonify({"message": "could not recieve data"}), 449 # Retry With (bad user input)
 
 
 	firstname = data.get("fname")
@@ -122,7 +130,7 @@ def signup():
 	
 	except mysql.connector.Error as err:
 		print("Database error:", err)
-		return jsonify({"message": "Database error"}), 449 # Retry With (bad user input)
+		return jsonify({"message": "Database error"}), 400 
 	
 	except Exception as err:
 		print("Other error:", err)
@@ -133,13 +141,13 @@ def signup():
 		db.close()
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods=["POST"])
 def login():
 	try:
 		data = retrieve()
 	except Exception as err:
 		print("Retrieve error:", err)
-		return jsonify({"message": "could not recieve data"}), 400
+		return jsonify({"message": "could not recieve data"}), 449 # Retry With (bad user input)
 	
 	email = data.get("email")
 	hashed = encrypt(data.get("password"))
@@ -147,7 +155,9 @@ def login():
 	try:
 		_, c = connect()
 
-		c.execute("SELECT * FROM brukere WHERE epost = %s AND password = %s", email, hashed)
+		c.execute("SELECT fornavn FROM brukere WHERE epost = %s AND password = %s", email, hashed)
+		row = c.fetchone()
+		print(row)
 
 	except mysql.connector.Error as err:
 		return jsonify({"message": "Database error"})
