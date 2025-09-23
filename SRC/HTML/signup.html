@@ -79,6 +79,7 @@
                     let data = await res.json();
                     alert(data.message);
                     document.getElementById('signupForm').reset()
+                    window.location.replace("http://127.0.0.1:5000/login")
                 } else {
                     alert("The passwords don't match. Try again.");
                 }

@@ -172,7 +172,7 @@ img.nProductBtnIMG {
     margin: 0 auto;
 }
 
-input[type=text], [type=password], [type=date], select, textarea {
+input[type=text], [type=password], [type=date], [type=file], select, textarea {
     width: 475px;
     padding: 12px;
     border: 1px solid #ccc;

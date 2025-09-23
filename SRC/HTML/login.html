@@ -31,7 +31,7 @@
             
             <label for="passord">Lag Passord <div class="asterisk">*</div></label>
             <br>
-            <input type="password" id="passord" name="password" placeholder="Skriv inn passord..." required>
+            <input type="password" id="password" name="password" placeholder="Skriv inn passord..." required>
             <br>
 
             <h4 id="required"><div class="asterisk">*</div> Påkrevd</h4>
@@ -47,7 +47,7 @@
                     headers: { "Content-Type": "application/json"},
                     body: JSON.stringify({
                         email: document.getElementById("email").value,
-						password: document.getElementById("passord").value,
+						password: document.getElementById("password").value,
                     })
                 });                
             });
