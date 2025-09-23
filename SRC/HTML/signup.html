@@ -60,7 +60,6 @@
         </form>
 
         <script>
-            console.log("Start")
             document.getElementById("signupForm").addEventListener("submit", async (e) => {
                 e.preventDefault();
 
@@ -75,14 +74,10 @@
                         birthdate: document.getElementById("birthday").value
                     })
                 });
-                console.log("Done")
 
                 let data = await res.json();
                 alert(data.message);
-                console.log("Message sent")
-                console.log("Resetting form")
                 document.getElementById('signupForm').reset()
-                console.log("Form resetted")
             });
         </script>
     </div>
