@@ -22,18 +22,18 @@
 <body>
     <h1>Logg inn:</h1>
 
-    <div class="inputpage">
+	<div class="inputpage">
         <form id="loginForm">
             <label for="email">E-Post <div class="asterisk">*</div></label>
             <br>
             <input type="text" id="email" name="email" placeholder="Skriv inn E-Post..." required>
             <br>
-
-            <label for="password">Passord <div class="asterisk">*</div></label>
-            <br>
-            <input type="password" id="password" name="password" placeholder="Skriv inn passord..." required>
-            <br>
             
+            <label for="passord">Lag Passord <div class="asterisk">*</div></label>
+            <br>
+            <input type="password" id="cpassword" name="password" placeholder="Skriv inn passord..." required>
+            <br>
+
             <h4 id="required"><div class="asterisk">*</div> Påkrevd</h4>
             <input type="submit" value="Send Inn">
         </form>
@@ -47,13 +47,9 @@
                     headers: { "Content-Type": "application/json"},
                     body: JSON.stringify({
                         email: document.getElementById("email").value,
-                        password: document.getElementById("password").value,
+						password: document.getElementById("passord").value,
                     })
-                });
-
-                let data = await res.json();
-                alert(data.message);
-                document.getElementById('loginForm').reset()
+                });                
             });
         </script>
     </div>

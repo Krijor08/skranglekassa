@@ -25,6 +25,17 @@ def connect():
 	c = db.cursor()
 	return db, c
 
+def encrypt(password):
+	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+	print("password hashed", hashed)
+	return hashed
+
+
+def retrieve():
+	data = request.get_json(force=True)
+	print("Retrieved")
+	return data
+
 
 # Eskil code
 @app.route("/chat", methods=["POST"])
@@ -76,32 +87,26 @@ def productPage():
 
 @app.route("/productimage")
 def productImage():
+	print("Image page")
 	return render_template("productimage.html")
 
 
-def retrieve():
+@app.route("/signup", methods=["POST"])
+def signup():
 	try:
-		data = request.json
-		return data
+		data = retrieve()
 	except Exception as err:
 		print("Retrieve error:", err)
 		return jsonify({"message": "could not recieve data"}), 400
-	
-	
-@app.route("/signup", methods=["POST"])
-def signup():
-	data = retrieve()
 
-	firstname = data["fname"]
-	lastname = data["lname"]
-	password = data["cpassword"]
-	bdate = data["birthdate"]
-	email = data["email"]
-	bdate = data["birthdate"]
 
-	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-	print("password hashed", hashed)
-	
+	firstname = data.get("fname")
+	lastname = data.get("lname")
+	bdate = data.get("birthdate")
+	email = data.get("email")
+	bdate = data.get("birthdate")
+
+	hashed = encrypt(data.get("cpassword"))
 
 	try:
 		db, c = connect()
@@ -127,6 +132,29 @@ def signup():
 		c.close()
 		db.close()
 
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+	try:
+		data = retrieve()
+	except Exception as err:
+		print("Retrieve error:", err)
+		return jsonify({"message": "could not recieve data"}), 400
+	
+	email = data.get("email")
+	hashed = encrypt(data.get("password"))
+
+	try:
+		_, c = connect()
+
+		c.execute("SELECT * FROM brukere WHERE epost = %s AND password = %s", email, hashed)
+
+	except mysql.connector.Error as err:
+		return jsonify({"message": "Database error"})
+	except Exception as err:
+		print("Other error:", err)
+		return jsonify({"message": "Unexpected error"}), 500 # Internal Server Error
+	
 
 @app.route("/")
 def home():
