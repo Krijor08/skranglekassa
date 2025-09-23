@@ -46,6 +46,7 @@ h1 {
     line-height: 30px;
     border-left-style: solid;
     border-left-color: green;
+    padding-left: 5px;
 }
 
 h2 {
@@ -54,6 +55,7 @@ h2 {
     line-height: 15px;
     border-left-style: solid;
     border-left-color: green;
+    padding-left: 5px;
 }
 
 h3 {
@@ -62,12 +64,14 @@ h3 {
     line-height: 10px;
     border-left-style: solid;
     border-left-color: green;
+    padding-left: 5px;
 }
 
 h4 {
     font-size: 15px;
     border-left-width: 5px;
     line-height: 5px;
+    padding-left: 5px;
 }
 
 p {
@@ -76,6 +80,7 @@ p {
     line-height: 25px;
     border-left-style: solid;
     border-left-color: green;
+    padding-left: 5px;
 }
 
 .navBtn {
@@ -249,6 +254,7 @@ input[type=submit]:hover {
 }
 
 #output {
+    padding-left: 5px;
     font-size: 20px;
     border-left-width: 2.5px;
     line-height: 20px;
