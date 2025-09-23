@@ -248,7 +248,7 @@ input[type=submit]:hover {
     width: 317.5px;
 }
 
-#aiOutput {
+#output {
     font-size: 20px;
     border-left-width: 2.5px;
     line-height: 20px;
