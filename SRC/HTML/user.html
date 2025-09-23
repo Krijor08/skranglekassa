@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main.css') }}">
+    <title>Skranglekassa.no/Alle Produkter</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='IMG/favicon.ico') }}">
+</head>  
+
+ <!--Header-->
+<header>
+    <h2>Skranglekassa.no</h2>
+</header>
+
+ <!--Navigation Buttons-->
+<nav>
+    <a href="{{ url_for('home')}}" class="navBtn">&lt;- Tilbake</a>  
+</nav>
+
+ <!--Text-->
+<body>
+    <h1>Navn Etternavn</h1>
+    <h1>Fødselsdag</h1> <!--Only shows if the current user is the user that owns the user-->
+    <h1>E-post</h1> <!--Only shows if the current user is the user that owns the user-->
+
+    <br>
+
+    <h1>Produkter:</h1>
+</body>
+
+ <!--Footer-->
+<footer>
+    <h2>Skranglekassa.no</h2>
+</footer>
+</html>

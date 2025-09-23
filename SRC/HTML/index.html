@@ -37,7 +37,7 @@
             // Check if the key pressed is Enter
             if (event.key === 'Enter') {
                 sendMessage(); // Call your function
-                //input.value = ''; // Optional: clear the input after sending 
+                clearField();
             }
 
         });
@@ -48,7 +48,6 @@
         document.getElementById("robotIMG").style.opacity="0%"
         //Sends API request to backend, and recives JSON file
         async function sendMessage() {
-            
             document.getElementById("sendBtn").style.opacity="0%";
             document.getElementById("loader").style.opacity="100%";
             const input = document.getElementById("userInput").value;
@@ -61,10 +60,15 @@
 
             const data = await res.json();
             chatLog.push("↓Bruker↓:", "<br>", input, "<br>", "<br>", "↓Skrotnissen↓:", "<br>", data.aiOutput, "<br>", "<br>");
+            clearField();
             document.getElementById("output").innerHTML = chatLog.join("");
             document.getElementById("sendBtn").style.opacity="100%";
             document.getElementById("loader").style.opacity="0%";
             document.getElementById("robotIMG").style.opacity="100%"
+        }
+
+        async function clearField() {
+            input.value = '';
         }
 
         //Is by default closed
