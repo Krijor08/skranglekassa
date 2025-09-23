@@ -291,3 +291,8 @@ input[type=submit]:hover {
     left: 500px;
     top: 150px;
 }
+
+.asterisk {
+    color: red;
+    display: inline;
+}

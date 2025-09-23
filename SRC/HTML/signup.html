@@ -24,37 +24,38 @@
 
     <div class="inputpage">
         <form id="signupForm">
-            <label for="fname">Fornavn *</label>
+            <label for="fname">Fornavn <div class="asterisk">*</div></label>
             <br>
             <input type="text" id="fname" name="firstname" placeholder="Skriv inn fornavn..." required>
             <br>
 
-            <label for="lname">Etternavn *</label>
+            <label for="lname">Etternavn <div class="asterisk">*</div></label>
             <br>
             <input type="text" id="lname" name="lastname" placeholder="Skriv inn etternavn..." required>
             <br>
 
-            <label for="email">E-Post *</label>
+            <label for="email">E-Post <div class="asterisk">*</div></label>
             <br>
             <input type="text" id="email" name="email" placeholder="Skriv inn E-Post..." required>
             <br>
 
-            <label for="birthday">Fødselsdag</label>
+            
+            <label for="birthday">Fødselsdag <div class="asterisk">*</div></label>
             <br>
-            <input type="date" id="birthday">
+            <input type="date" id="birthday" required>
             <br>
             
-            <label for="cpassword">Lag Passord *</label>
+            <label for="cpassword">Lag Passord <div class="asterisk">*</div></label>
             <br>
             <input type="password" id="cpassword" name="createpassword" placeholder="Lag passord..." required>
             <br>
 
-            <label for="rpassword">Gjenta Passord *</label>
+            <label for="rpassword">Gjenta Passord <div class="asterisk">*</div></label>
             <br>
             <input type="password" id="rpassword" name="repeatpassword" placeholder="Gjenta passord..." required>
             <br>
 
-            <h4 id="required">* Påkrevd</h4>
+            <h4 id="required"><div class="asterisk">*</div> Påkrevd</h4>
             <input type="submit" value="Send Inn">
         </form>
 
