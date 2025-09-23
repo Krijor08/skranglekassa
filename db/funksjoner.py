@@ -15,10 +15,10 @@ CORS(app)
 def connect():
 
 	db = mysql.connector.connect(
-	host = "192.168.40.244",
+	host = "192.168.20.174",
 	user = "test",
-	password = "test",
-	database = "skra_skranglekassa",
+	password = "1234",
+	database = "skranglekassa",
 	port = 3306
 	)
 
@@ -102,7 +102,7 @@ def signup():
 		db, c = connect()
 		print("connected")
 
-		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord, fodselsdag) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
+		c.execute("INSERT INTO brukere (fornavn, etternavn, epost, passord, fodselsdato) VALUES (%s, %s, %s, %s, %s)", (firstname, lastname, email, hashed, bdate))
 		print("Executed insertion")
 
 		db.commit()
