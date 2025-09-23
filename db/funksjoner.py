@@ -26,7 +26,7 @@ def connect():
 	return db, c
 
 def encrypt(password):
-	hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+	hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
 	print("password hashed", hashed)
 	return hashed
 
@@ -101,8 +101,10 @@ def productImage():
 
 @app.route("/signup", methods=["POST"])
 def signup():
+	print("signup")
 	try:
 		data = retrieve()
+		print("retrieved")
 	except Exception as err:
 		print("Retrieve error:", err)
 		return jsonify({"message": "could not recieve data"}), 449 # Retry With (bad user input)
@@ -143,28 +145,40 @@ def signup():
 
 @app.route("/login", methods=["POST"])
 def login():
+	print("login")
 	try:
 		data = retrieve()
 	except Exception as err:
 		print("Retrieve error:", err)
 		return jsonify({"message": "could not recieve data"}), 449 # Retry With (bad user input)
 	
-	email = data.get("email")
-	hashed = encrypt(data.get("password"))
+	email = str(data.get("email"))
+	password = data.get("password")
+
+	print(email, password)
 
 	try:
 		_, c = connect()
 
-		c.execute("SELECT fornavn FROM brukere WHERE epost = %s AND password = %s", email, hashed)
-		row = c.fetchone()
-		print(row)
-
 	except mysql.connector.Error as err:
-		return jsonify({"message": "Database error"})
+		print("Database error:", err)
+		return jsonify({"message": "Database connection error"})
 	except Exception as err:
 		print("Other error:", err)
-		return jsonify({"message": "Unexpected error"}), 500 # Internal Server Error
+		return jsonify({"message": "Unexpected database error"}), 500 # Internal Server Error
 	
+	try:
+		query = "SELECT passord FROM brukere WHERE epost = %s;"
+		c.execute(query, (email,))
+		row = c.fetchone()
+
+		if bcrypt.checkpw(password.encode("utf-8"), row[0]):
+			return jsonify({"message": "User exists"}), 200
+		else:
+			return jsonify({"message": "Login failed"}), 401
+	except TypeError or Exception as err:
+		print(err)
+		return jsonify({"message": "Database error"}), 500
 
 @app.route("/")
 def home():
