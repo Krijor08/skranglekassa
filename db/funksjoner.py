@@ -11,9 +11,10 @@ app = Flask(
 
 CORS(app)
 
+loggedIn = False
+
 
 def connect():
-
 	db = mysql.connector.connect(
 	host = "192.168.20.174",
 	user = "test",
@@ -24,6 +25,7 @@ def connect():
 
 	c = db.cursor()
 	return db, c
+
 
 def encrypt(password):
 	hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
@@ -51,24 +53,28 @@ def chat():
 
 @app.route("/contact")
 def contactPage():
+	global loggedIn
 	print("Contact page")
-	return render_template("contact.html")
+	return render_template("contact.html"), loggedIn
 
 
 @app.route("/login")
 def loginPage():
+	global loggedIn
 	print("Login page")
-	return render_template("login.html")
+	return render_template("login.html"), loggedIn
 
 
 @app.route("/signup")
 def signupPage():
+	global loggedIn
 	print("Signup page")
-	return render_template("signup.html")
+	return render_template("signup.html"), loggedIn
 
 
 @app.route("/allproducts")
 def allProductsPage():
+	global loggedIn
 	print("All products")
 
 	db, c = connect()
@@ -78,29 +84,33 @@ def allProductsPage():
 		ORDER BY sist_endret;
 	""")
 
-	return render_template("allproducts.html")
+	return render_template("allproducts.html"), loggedIn
 
 
 @app.route("/newproduct")
 def newProductPage():
+	global loggedIn
 	print("New product page")
-	return render_template("newproduct.html")
+	return render_template("newproduct.html"), loggedIn
 
 
 @app.route("/product")
 def productPage():
+	global loggedIn
 	print("Product page")
-	return render_template("product.html")
+	return render_template("product.html"), loggedIn
 
 
 @app.route("/productimage")
 def productImage():
+	global loggedIn
 	print("Image page")
-	return render_template("productimage.html")
+	return render_template("productimage.html"), loggedIn
 
 
 @app.route("/signup", methods=["POST"])
 def signup():
+	global loggedIn
 	print("signup")
 	try:
 		data = retrieve()
@@ -145,6 +155,7 @@ def signup():
 
 @app.route("/login", methods=["POST"])
 def login():
+	global loggedIn
 	print("login")
 	try:
 		data = retrieve()
@@ -173,15 +184,19 @@ def login():
 		row = c.fetchone()
 
 		if bcrypt.checkpw(password.encode("utf-8"), row[0]):
+			loggedIn = True
 			return jsonify({"message": "User exists"}), 200
 		else:
+			loggedIn = False
 			return jsonify({"message": "Login failed"}), 401
 	except TypeError or Exception as err:
 		print(err)
 		return jsonify({"message": "Database error"}), 500
 
+
 @app.route("/")
 def home():
+	global loggedIn
 	print(app.url_map)
 	return render_template(
 		"index.html", 
@@ -192,4 +207,4 @@ def home():
 		newProductPage_url=url_for("newProductPage"),
 		image_url=url_for("productImage"),
 		productPage_url=url_for("productPage")
-		)
+		), loggedIn
