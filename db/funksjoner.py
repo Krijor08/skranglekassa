@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
 try:
 	import ai_logic as ai
+	print("Is ai yes")
 	noai = False
 except:
 	print("Ai not working")
@@ -57,7 +58,7 @@ def chat():
 		return jsonify({"aiOutput": AIOutput})
 	else:
 		return jsonify({"aiOutput": "Beklager! Ai fungerer foreløpig ikke grunnet serverfeil."}), 503
-
+# End of Eskil code
 
 @app.route("/contact")
 def contactPage():
@@ -150,13 +151,11 @@ def signup():
 		print("Retrieve error:", err)
 		return jsonify({"message": "could not recieve data"}), 449 # Retry With (bad user input)
 
-
 	firstname = data.get("fname")
 	lastname = data.get("lname")
 	bdate = data.get("birthdate")
 	email = data.get("email")
 	bdate = data.get("birthdate")
-
 	hashed = encrypt(data.get("cpassword"))
 
 	try:
@@ -173,7 +172,7 @@ def signup():
 	
 	except mysql.IntegrityError as err:
 		print("Database error:", err)
-		return jsonify({"message": "User with some similar credentials already exists"}), 400 		
+		return jsonify({"message": "User with some similar credentials already exists"}), 409
 	
 	except mysql.connector.Error as err:
 		print("Database error:", err)
@@ -196,7 +195,7 @@ def login():
 		data = retrieve()
 	except Exception as err:
 		print("Retrieve error:", err)
-		return jsonify({"message": "could not recieve data"}), 449 # Retry With (bad user input)
+		return jsonify({"message": "could not receive data"}), 449 # Retry With (bad user input)
 	
 	email = str(data.get("email"))
 	password = data.get("password")
@@ -221,12 +220,17 @@ def login():
 		if bcrypt.checkpw(password.encode("utf-8"), row[0]):
 			loggedIn = True
 			print("logged in!")
-			return jsonify({"message": "User exists"}), 
+			return jsonify({"message": "Login successful"}), 200
 		else:
 			loggedIn = False
 			print("Not logged in..")
 			return jsonify({"message": "Login failed"}), 401
-	except TypeError or Exception as err:
+		
+	except TypeError as err:
+		print(err)
+		return jsonify({"message": "Database error"}), 422
+	
+	except Exception as err:
 		print(err)
 		return jsonify({"message": "Database error"}), 500
 
