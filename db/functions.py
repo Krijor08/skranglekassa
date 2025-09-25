@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
+import mysql.connector, bcrypt
+
 try:
 	import ai_logic as ai
 	print("Is ai yes")
@@ -7,7 +9,7 @@ try:
 except:
 	print("Ai not working")
 	noai = True
-import mysql.connector, bcrypt
+
 
 app = Flask(
     __name__,
@@ -22,9 +24,9 @@ loggedIn = False
 
 def connect():
 	db = mysql.connector.connect(
-	host = "127.0.0.1",
-	user = "root",
-	password = "root",
+	host = "127.0.0.1",		#
+	user = "root",			# Change credentials
+	password = "root",		#
 	database = "skranglekassa",
 	port = 3306
 	)

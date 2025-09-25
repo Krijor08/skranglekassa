@@ -1,4 +1,4 @@
-from funksjoner import *
+from functions import *
 
 print(app)
 print(app.template_folder)
