@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `brukere` (
   `adresse` NVARCHAR(100) NULL,
   PRIMARY KEY (`bruker_id`));
   
-CREATE TABLE IF NOT EXISTS `mydb`.`oppforinger` (
+CREATE TABLE IF NOT EXISTS `oppforinger` (
   `oppforing_id` INT NOT NULL AUTO_INCREMENT,
   `selger_id` INT NOT NULL,
   `produktnavn` NVARCHAR(100) NOT NULL,
@@ -22,11 +22,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`oppforinger` (
   INDEX `fk_oppforinger_brukere1_idx` (`selger_id` ASC) VISIBLE,
   CONSTRAINT `fk_oppforinger_brukere1`
     FOREIGN KEY (`selger_id`)
-    REFERENCES `mydb`.`brukere` (`bruker_id`)
+    REFERENCES `brukere` (`bruker_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
     
-CREATE TABLE IF NOT EXISTS `mydb`.`produkter` (
+CREATE TABLE IF NOT EXISTS `produkter` (
   `produkt_id` INT NOT NULL AUTO_INCREMENT,
   `oppforing` INT NOT NULL,
   `produktnavn` NVARCHAR(100) NOT NULL,
@@ -35,6 +35,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`produkter` (
   INDEX `fk_produkter_oppforinger1_idx` (`oppforing` ASC) VISIBLE,
   CONSTRAINT `fk_produkter_oppforinger1`
     FOREIGN KEY (`oppforing`)
-    REFERENCES `mydb`.`oppforinger` (`oppforing_id`)
+    REFERENCES `oppforinger` (`oppforing_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
