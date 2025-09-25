@@ -34,6 +34,7 @@ def encrypt(password):
 
 
 def retrieve():
+	global loggedIn
 	data = request.get_json(force=True)
 	print("Retrieved")
 	return data
@@ -55,21 +56,21 @@ def chat():
 def contactPage():
 	global loggedIn
 	print("Contact page")
-	return render_template("contact.html"), loggedIn
+	return render_template("contact.html")
 
 
 @app.route("/login")
 def loginPage():
 	global loggedIn
 	print("Login page")
-	return render_template("login.html"), loggedIn
+	return render_template("login.html")
 
 
 @app.route("/signup")
 def signupPage():
 	global loggedIn
 	print("Signup page")
-	return render_template("signup.html"), loggedIn
+	return render_template("signup.html")
 
 
 @app.route("/allproducts")
@@ -77,35 +78,35 @@ def allProductsPage():
 	global loggedIn
 	print("All products")
 
-	db, c = connect()
+	_, c = connect()
 
 	c.execute("""
 		SELECT * FROM oppforinger
 		ORDER BY sist_endret;
 	""")
 
-	return render_template("allproducts.html"), loggedIn
+	return render_template("allproducts.html")
 
 
 @app.route("/newproduct")
 def newProductPage():
 	global loggedIn
 	print("New product page")
-	return render_template("newproduct.html"), loggedIn
+	return render_template("newproduct.html")
 
 
 @app.route("/product")
 def productPage():
 	global loggedIn
 	print("Product page")
-	return render_template("product.html"), loggedIn
+	return render_template("product.html")
 
 
 @app.route("/productimage")
 def productImage():
 	global loggedIn
 	print("Image page")
-	return render_template("productimage.html"), loggedIn
+	return render_template("productimage.html")
 
 
 @app.route("/signup", methods=["POST"])
@@ -198,13 +199,29 @@ def login():
 def home():
 	global loggedIn
 	print(app.url_map)
-	return render_template(
-		"index.html", 
-		contactPage_url=url_for("contactPage"),
-		signupPage_url=url_for("signupPage"),
-		loginPage_url=url_for("loginPage"),
-		allProductsPage_url=url_for("allProductsPage"),
-		newProductPage_url=url_for("newProductPage"),
-		image_url=url_for("productImage"),
-		productPage_url=url_for("productPage")
-		), loggedIn
+	if loggedIn == False:
+		return render_template(
+			"index.html", 
+			contactPage_url=url_for("contactPage"),
+			signupPage_url=url_for("signupPage"),
+			loginPage_url=url_for("loginPage"),
+			allProductsPage_url=url_for("allProductsPage"),
+			newProductPage_url=url_for("newProductPage"),
+			image_url=url_for("productImage"),
+			productPage_url=url_for("productPage")
+			)
+	
+	elif loggedIn == True:
+		return render_template(
+			"home.html", 
+			contactPage_url=url_for("contactPage"),
+			signupPage_url=url_for("signupPage"),
+			loginPage_url=url_for("loginPage"),
+			allProductsPage_url=url_for("allProductsPage"),
+			newProductPage_url=url_for("newProductPage"),
+			image_url=url_for("productImage"),
+			productPage_url=url_for("productPage")
+			)
+	else:
+		print("How are you here?")
+		return jsonify({"message": "How are you here?"}), 418
