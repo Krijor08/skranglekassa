@@ -53,17 +53,18 @@
                 });
 
                 if (res.status === 200) {
-                    alert("Login successful.");
+                    alert("Du er nå logget inn.");
                     window.location.replace(href="{{ url_for('home')}}");
                     document.getElementById("loginForm").reset();
                 } else {
-                    alert("The password or email is incorrect. Try again.");
+                    alert("Passordet eller eposten er feil. Prøv igjen.");
                 }
 
                 let data = await res.json();
 
             } catch (err) {
-                alert("Something went wrong.");
+                alert("Noe gikk galt.");
+                console.log(err);
             }
         });
 
