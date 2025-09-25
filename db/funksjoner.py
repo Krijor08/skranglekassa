@@ -1,6 +1,11 @@
 from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
-import ai_logic as ai
+try:
+	import ai_logic as ai
+	noai = False
+except:
+	print("Ai not working")
+	noai = True
 import mysql.connector, bcrypt
 
 app = Flask(
@@ -16,9 +21,9 @@ loggedIn = False
 
 def connect():
 	db = mysql.connector.connect(
-	host = "192.168.20.174",
-	user = "test",
-	password = "1234",
+	host = "127.0.0.1",
+	user = "root",
+	password = "root",
 	database = "skranglekassa",
 	port = 3306
 	)
@@ -42,13 +47,16 @@ def retrieve():
 # Eskil code
 @app.route("/chat", methods=["POST"])
 def chat():
-    data = request.json
-    userInput = data.get("userInput", "")
+	if not noai:
+		data = request.json
+		userInput = data.get("userInput", "")
 
-    if not userInput:
-        return jsonify({"error": "No input provided"}), 400
-    AIOutput = ai.get_ai_response(userInput)
-    return jsonify({"aiOutput": AIOutput})
+		if not userInput:
+			return jsonify({"error": "No input provided"}), 400
+		AIOutput = ai.get_ai_response(userInput)
+		return jsonify({"aiOutput": AIOutput})
+	else:
+		return jsonify({"aiOutput": "Beklager! Ai fungerer foreløpig ikke grunnet serverfeil."}), 500
 
 
 @app.route("/contact")
@@ -112,13 +120,13 @@ def userPage():
 	global loggedIn
 	print("user page")
 	if loggedIn == True:
-		return render_template("productimage.html")
+		return render_template("user.html")
 	else: 
 		return jsonify({"message": "Login to view page"}), 401
 
 
 @app.route("/logout")
-def logout():
+def logoutPage():
 	global loggedIn
 	loggedIn = False
 	return render_template("logout.html")
