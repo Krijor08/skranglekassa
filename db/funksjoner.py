@@ -39,7 +39,6 @@ def retrieve():
 	print("Retrieved")
 	return data
 
-
 # Eskil code
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -107,6 +106,22 @@ def productImage():
 	global loggedIn
 	print("Image page")
 	return render_template("productimage.html")
+
+@app.route("/user")
+def userPage():
+	global loggedIn
+	print("user page")
+	if loggedIn == True:
+		return render_template("productimage.html")
+	else: 
+		return jsonify({"message": "Login to view page"}), 401
+
+
+@app.route("/logout")
+def logout():
+	global loggedIn
+	loggedIn = False
+	return render_template("logout.html")
 
 
 @app.route("/signup", methods=["POST"])
@@ -186,9 +201,11 @@ def login():
 
 		if bcrypt.checkpw(password.encode("utf-8"), row[0]):
 			loggedIn = True
+			print("logged in!")
 			return jsonify({"message": "User exists"}), 200
 		else:
 			loggedIn = False
+			print("Not logged in..")
 			return jsonify({"message": "Login failed"}), 401
 	except TypeError or Exception as err:
 		print(err)
@@ -198,7 +215,7 @@ def login():
 @app.route("/")
 def home():
 	global loggedIn
-	print(app.url_map)
+	print(app.url_map, loggedIn)
 	if loggedIn == False:
 		return render_template(
 			"index.html", 
@@ -208,7 +225,9 @@ def home():
 			allProductsPage_url=url_for("allProductsPage"),
 			newProductPage_url=url_for("newProductPage"),
 			image_url=url_for("productImage"),
-			productPage_url=url_for("productPage")
+			productPage_url=url_for("productPage"),
+			userPage_url=url_for("userPage"),
+			logoutPage_url=url_for("logoutPage")
 			)
 	
 	elif loggedIn == True:
@@ -220,7 +239,8 @@ def home():
 			allProductsPage_url=url_for("allProductsPage"),
 			newProductPage_url=url_for("newProductPage"),
 			image_url=url_for("productImage"),
-			productPage_url=url_for("productPage")
+			productPage_url=url_for("productPage"),
+			userPage_url=url_for("userPage")
 			)
 	else:
 		print("How are you here?")
