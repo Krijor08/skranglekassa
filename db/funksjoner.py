@@ -56,13 +56,14 @@ def chat():
 		AIOutput = ai.get_ai_response(userInput)
 		return jsonify({"aiOutput": AIOutput})
 	else:
-		return jsonify({"aiOutput": "Beklager! Ai fungerer foreløpig ikke grunnet serverfeil."}), 500
+		return jsonify({"aiOutput": "Beklager! Ai fungerer foreløpig ikke grunnet serverfeil."}), 503
 
 
 @app.route("/contact")
 def contactPage():
 	global loggedIn
 	print("Contact page")
+
 	return render_template("contact.html")
 
 
@@ -70,6 +71,7 @@ def contactPage():
 def loginPage():
 	global loggedIn
 	print("Login page")
+
 	return render_template("login.html")
 
 
@@ -77,6 +79,7 @@ def loginPage():
 def signupPage():
 	global loggedIn
 	print("Signup page")
+
 	return render_template("signup.html")
 
 
@@ -99,6 +102,7 @@ def allProductsPage():
 def newProductPage():
 	global loggedIn
 	print("New product page")
+
 	return render_template("newproduct.html")
 
 
@@ -106,6 +110,7 @@ def newProductPage():
 def productPage():
 	global loggedIn
 	print("Product page")
+
 	return render_template("product.html")
 
 
@@ -113,6 +118,7 @@ def productPage():
 def productImage():
 	global loggedIn
 	print("Image page")
+
 	return render_template("productimage.html")
 
 @app.route("/user")
@@ -129,6 +135,7 @@ def userPage():
 def logoutPage():
 	global loggedIn
 	loggedIn = False
+
 	return render_template("logout.html")
 
 
@@ -163,6 +170,10 @@ def signup():
 		print("Committed")
 
 		return jsonify({"message": "User created successfully"}), 201 # Created
+	
+	except mysql.IntegrityError as err:
+		print("Database error:", err)
+		return jsonify({"message": "User with some similar credentials already exists"}), 400 		
 	
 	except mysql.connector.Error as err:
 		print("Database error:", err)
@@ -210,7 +221,7 @@ def login():
 		if bcrypt.checkpw(password.encode("utf-8"), row[0]):
 			loggedIn = True
 			print("logged in!")
-			return jsonify({"message": "User exists"}), 200
+			return jsonify({"message": "User exists"}), 
 		else:
 			loggedIn = False
 			print("Not logged in..")
@@ -239,17 +250,7 @@ def home():
 			)
 	
 	elif loggedIn == True:
-		return render_template(
-			"home.html", 
-			contactPage_url=url_for("contactPage"),
-			signupPage_url=url_for("signupPage"),
-			loginPage_url=url_for("loginPage"),
-			allProductsPage_url=url_for("allProductsPage"),
-			newProductPage_url=url_for("newProductPage"),
-			image_url=url_for("productImage"),
-			productPage_url=url_for("productPage"),
-			userPage_url=url_for("userPage")
-			)
+		return render_template("home.html")
 	else:
 		print("How are you here?")
-		return jsonify({"message": "How are you here?"}), 418
+		return jsonify({"message": "How are you here?"}), 418 # I'm a teapot
