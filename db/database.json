@@ -58,5 +58,205 @@
         "price": 319.00,
         "currency": "NOK",
         "quantity": 8
+    },
+    {
+        "id": "007",
+        "name": "Skranglekasse Pro",
+        "description": "Premium skranglekasse med flere lyder",
+        "category": "leker",
+        "tags": ["premium", "barn", "musikk"],
+        "price": 299.00,
+        "currency": "NOK",
+        "quantity": 15
+    },
+    {
+        "id": "008",
+        "name": "Barnesokker",
+        "description": "Fargerike sokker for barn",
+        "category": "klær",
+        "tags": ["barn", "sokker", "fargerik"],
+        "price": 49.00,
+        "currency": "NOK",
+        "quantity": 100
+    },
+    {
+        "id": "009",
+        "name": "Musikkbok",
+        "description": "Introduksjon til musikk for små barn",
+        "category": "bøker",
+        "tags": ["musikk", "læring", "barn"],
+        "price": 149.00,
+        "currency": "NOK",
+        "quantity": 30
+    },
+    {
+        "id": "010",
+        "name": "Rytmepinner",
+        "description": "Trepinner for rytmeøvelser",
+        "category": "musikk",
+        "tags": ["rytme", "tre", "musikk"],
+        "price": 89.00,
+        "currency": "NOK",
+        "quantity": 45
+    },
+    {
+        "id": "011",
+        "name": "Mini Xylofon",
+        "description": "Fargerik xylofon for barn",
+        "category": "musikk",
+        "tags": ["instrument", "barn", "farger"],
+        "price": 199.00,
+        "currency": "NOK",
+        "quantity": 25
+    },
+    {
+        "id": "012",
+        "name": "Barnelue",
+        "description": "Varm og myk lue for barn",
+        "category": "klær",
+        "tags": ["barn", "vinter", "varm"],
+        "price": 129.00,
+        "currency": "NOK",
+        "quantity": 40
+    },
+    {
+        "id": "013",
+        "name": "Musikkbrikker",
+        "description": "Pedagogiske brikker med musikksymboler",
+        "category": "læring",
+        "tags": ["musikk", "pedagogisk", "barn"],
+        "price": 159.00,
+        "currency": "NOK",
+        "quantity": 35
+    },
+    {
+        "id": "014",
+        "name": "Skranglevotter",
+        "description": "Votter med innebygd skrangle",
+        "category": "klær",
+        "tags": ["vinter", "musikk", "barn"],
+        "price": 169.00,
+        "currency": "NOK",
+        "quantity": 30
+    },
+    {
+        "id": "015",
+        "name": "Musikkspill",
+        "description": "Brettspill med musikalske utfordringer",
+        "category": "spill",
+        "tags": ["brettspill", "musikk", "læring"],
+        "price": 249.00,
+        "currency": "NOK",
+        "quantity": 20
+    },
+    {
+        "id": "016",
+        "name": "Skranglesett Deluxe",
+        "description": "Komplett sett med ulike skrangler",
+        "category": "pakker",
+        "tags": ["premium", "gave", "musikk"],
+        "price": 499.00,
+        "currency": "NOK",
+        "quantity": 10
+    },
+    {
+        "id": "017",
+        "name": "Aktivitetsmatte",
+        "description": "Stor matte med musikalske aktiviteter",
+        "category": "utstyr",
+        "tags": ["aktivitet", "musikk", "læring"],
+        "price": 299.00,
+        "currency": "NOK",
+        "quantity": 15
+    },
+    {
+        "id": "018",
+        "name": "Musikkterninger",
+        "description": "Terninger med noter og rytmer",
+        "category": "spill",
+        "tags": ["musikk", "spill", "læring"],
+        "price": 89.00,
+        "currency": "NOK",
+        "quantity": 50
+    },
+    {
+        "id": "019",
+        "name": "Barnegitar",
+        "description": "Liten gitar tilpasset barn",
+        "category": "musikk",
+        "tags": ["instrument", "barn", "musikk"],
+        "price": 399.00,
+        "currency": "NOK",
+        "quantity": 12
+    },
+    {
+        "id": "020",
+        "name": "Musikkpuslespill",
+        "description": "Puslespill med musikalske motiver",
+        "category": "spill",
+        "tags": ["puslespill", "musikk", "barn"],
+        "price": 149.00,
+        "currency": "NOK",
+        "quantity": 25
+    },
+    {
+        "id": "021",
+        "name": "Rytmeegg",
+        "description": "Egg-formede maracas for barn",
+        "category": "musikk",
+        "tags": ["rytme", "instrument", "barn"],
+        "price": 79.00,
+        "currency": "NOK",
+        "quantity": 40
+    },
+    {
+        "id": "022",
+        "name": "Musikkbok Deluxe",
+        "description": "Interaktiv musikkbok med lyder",
+        "category": "bøker",
+        "tags": ["musikk", "interaktiv", "læring"],
+        "price": 299.00,
+        "currency": "NOK",
+        "quantity": 18
+    },
+    {
+        "id": "023",
+        "name": "Skranglebelte",
+        "description": "Belte med festede skrangler",
+        "category": "tilbehør",
+        "tags": ["musikk", "aktivitet", "barn"],
+        "price": 199.00,
+        "currency": "NOK",
+        "quantity": 22
+    },
+    {
+        "id": "024",
+        "name": "Musikkmemory",
+        "description": "Memoryspill med instrumenter",
+        "category": "spill",
+        "tags": ["memory", "musikk", "barn"],
+        "price": 129.00,
+        "currency": "NOK",
+        "quantity": 35
+    },
+    {
+        "id": "025",
+        "name": "Trommepad",
+        "description": "Myk trommepad for barn",
+        "category": "musikk",
+        "tags": ["tromme", "instrument", "barn"],
+        "price": 259.00,
+        "currency": "NOK",
+        "quantity": 20
+    },
+    {
+        "id": "026",
+        "name": "Musikkforkle",
+        "description": "Forkle med lommer for instrumenter",
+        "category": "tilbehør",
+        "tags": ["praktisk", "musikk", "barn"],
+        "price": 179.00,
+        "currency": "NOK",
+        "quantity": 28
     }
 ]
