@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template, url_for
 from flask_cors import CORS
 import mysql.connector, bcrypt
+import json
 
 try:
 	import ai_logic as ai
@@ -48,6 +49,9 @@ def retrieve():
 	return data
 
 # Eskil code
+with open("db/database.json", "r") as f:
+	database = json.load(f)
+
 @app.route("/chat", methods=["POST"])
 def chat():
 	if not noai:

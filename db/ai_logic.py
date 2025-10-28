@@ -18,8 +18,12 @@ messages=[
     SystemMessage("You help users with their finding products in our store.")
 ]
 
-def get_ai_response(userInput: str) -> str:
+def get_ai_response(userInput: str, database: dict) -> str:
     global messages
+
+    if len(messages) <= 3:
+        messages.append(SystemMessage(f"Here is the product database: {database}"))
+
 
     messages.append(UserMessage(userInput))
 

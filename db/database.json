@@ -1,0 +1,52 @@
+[
+    {
+        "id": "001",
+        "name": "Skranglekasse Mini",
+        "description": "Liten tre-skranglekasse for barn, malt med trygge farger.",
+        "category": "leker",
+        "tags": ["tre", "barn", "musikk"],
+        "price": 129.00,
+        "currency": "NOK",
+        "quantity": 24
+    },
+    {
+        "id": "002",
+        "name": "Skranglekasse Duo",
+        "description": "Dobbeltkammer skranglekasse med ekstra klikkelyd.",
+        "category": "leker",
+        "tags": ["tre", "barn", "lyd"],
+        "price": 219.50,
+        "currency": "NOK",
+        "quantity": 12
+    },
+    {
+        "id": "003",
+        "name": "Læringsmatte A4",
+        "description": "Tynt underlag for kreativ lek, vaskbart og slitesterkt.",
+        "category": "utstyr",
+        "tags": ["matte", "barn", "vaske"],
+        "price": 79.00,
+        "currency": "NOK",
+        "quantity": 40
+    },
+    {
+        "id": "004",
+        "name": "Reparasjonssett Skrangle",
+        "description": "Reservedeler og småverktøy for vedlikehold av skranglekasser.",
+        "category": "tilbehør",
+        "tags": ["reservedel", "verktøy"],
+        "price": 49.00,
+        "currency": "NOK",
+        "quantity": 60
+    },
+    {
+        "id": "005",
+        "name": "Gaveeske Skranglepakke",
+        "description": "Gavesett med Mini + Duo, fint innpakket.",
+        "category": "pakker",
+        "tags": ["gave", "pakke"],
+        "price": 319.00,
+        "currency": "NOK",
+        "quantity": 8
+    }
+]
