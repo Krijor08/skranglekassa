@@ -60,7 +60,7 @@ def chat():
 
 		if not userInput:
 			return jsonify({"error": "No input provided"}), 400
-		AIOutput = ai.get_ai_response(userInput)
+		AIOutput = ai.get_ai_response(userInput, database)
 		return jsonify({"aiOutput": AIOutput})
 	else:
 		return jsonify({"aiOutput": "Beklager! Ai fungerer foreløpig ikke grunnet serverfeil."}), 503
