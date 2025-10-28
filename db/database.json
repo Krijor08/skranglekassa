@@ -1,6 +1,16 @@
 [
     {
         "id": "001",
+        "name": "sko",
+        "description": "En fin sko for barn",
+        "category": "klær",
+        "tags": ["barn", "sko", "komfort"],
+        "price": 100.00,
+        "currency": "NOK",
+        "quantity": 50
+    },
+    {
+        "id": "002",
         "name": "Skranglekasse Mini",
         "description": "Liten tre-skranglekasse for barn, malt med trygge farger.",
         "category": "leker",
@@ -10,7 +20,7 @@
         "quantity": 24
     },
     {
-        "id": "002",
+        "id": "003",
         "name": "Skranglekasse Duo",
         "description": "Dobbeltkammer skranglekasse med ekstra klikkelyd.",
         "category": "leker",
@@ -20,7 +30,7 @@
         "quantity": 12
     },
     {
-        "id": "003",
+        "id": "004",
         "name": "Læringsmatte A4",
         "description": "Tynt underlag for kreativ lek, vaskbart og slitesterkt.",
         "category": "utstyr",
@@ -30,7 +40,7 @@
         "quantity": 40
     },
     {
-        "id": "004",
+        "id": "005",
         "name": "Reparasjonssett Skrangle",
         "description": "Reservedeler og småverktøy for vedlikehold av skranglekasser.",
         "category": "tilbehør",
@@ -40,7 +50,7 @@
         "quantity": 60
     },
     {
-        "id": "005",
+        "id": "006",
         "name": "Gaveeske Skranglepakke",
         "description": "Gavesett med Mini + Duo, fint innpakket.",
         "category": "pakker",
