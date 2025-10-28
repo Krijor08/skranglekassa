@@ -16,7 +16,7 @@ client = ChatCompletionsClient(
 # Initialize message history with system instructions
 messages=[
     SystemMessage("You are a helpful assistant that is called Skrotnissen."),
-    SystemMessage("You answer in a friendly and concise manner."),
+    SystemMessage("You answer in a friendly, concise manner and as short as possible without lossing any detail or helpfullness."),
     SystemMessage("You help users with their finding products in our store.")
 ]
 
