@@ -49,21 +49,26 @@ def retrieve():
 	return data
 
 # Eskil code
+
+# Load product database from JSON file
 with open("db/database.json", "r") as f:
-	database = json.load(f)
+	database = json.load(f) # Load product to database variable
 
 @app.route("/chat", methods=["POST"])
 def chat():
+
+	# check if ai is available
 	if not noai:
 		data = request.json
-		userInput = data.get("userInput", "")
+		userInput = data.get("userInput", "") # Get user input from request
 
+		# Validate user input
 		if not userInput:
-			return jsonify({"error": "No input provided"}), 400
-		AIOutput = ai.get_ai_response(userInput, database)
-		return jsonify({"aiOutput": AIOutput})
+			return jsonify({"error": "No input provided"}), 400 
+		AIOutput = ai.get_ai_response(userInput, database) # Get AI response using the function from ai_logic.py
+		return jsonify({"aiOutput": AIOutput})# Return AI response as JSON
 	else:
-		return jsonify({"aiOutput": "Beklager! Ai fungerer foreløpig ikke grunnet serverfeil."}), 503
+		return jsonify({"aiOutput": "Beklager! Ai fungerer foreløpig ikke grunnet serverfeil."}), 503 # Service Unavailable error
 # End of Eskil code
 
 @app.route("/contact")
